@@ -65,4 +65,4 @@ git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/z
 ```
 
 ### Screenshot
-![zsh screenshot](screenshots/zsh.png)
+![zsh screenshot](private_screenshots/private_zsh.png)
