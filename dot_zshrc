@@ -42,6 +42,7 @@ bindkey -v '^?' backward-delete-char
 # export ARCHFLAGS="-arch x86_64"
 
 alias dt='git --git-dir=$HOME/dev/dotfiles/ --work-tree=$HOME'
+alias cm='chezmoi'
 alias as='android-studio'
 alias ave='source ./venv/bin/activate'
 alias mvn='mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml'
