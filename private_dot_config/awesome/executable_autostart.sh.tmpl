@@ -39,8 +39,13 @@ fi
 # Daemonize compton
 run compton -c --backend glx --vsync opengl-swc --blur-background
 
+{{- if contains "laptop" .chezmoi.hostname }}
+
 # Wifi applet
-#run nm-applet
+run nm-applet
+{{- end }}
+
+# Blue light filter
 run redshift
 
 if [[ "${bar}" = "polybar" ]]; then
