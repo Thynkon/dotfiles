@@ -260,6 +260,9 @@ globalkeys = table.join(
     awful.key({ modkey }, "d",
 		function () awful.spawn(string.format("%s/scripts/appsmenu.sh", rofi_config)) end,
         {description = "rofi" , group = "launcher" }),
+    awful.key({ modkey }, "y",
+		function () awful.spawn(string.format("%s/.local/bin/udiskie-dmenu", os.getenv("HOME"))) end,
+		{description = "Device manager", group = "launcher"}),
 
 	-- super + ...
     awful.key({ modkey }, "u",
