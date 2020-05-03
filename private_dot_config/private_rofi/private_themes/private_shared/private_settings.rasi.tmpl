@@ -2,7 +2,11 @@
  * Allows to change the settings of every menu simply by editing this file
  */
 @import "colorschemes/dark-steel-blue.rasi"
+{{- if contains "laptop" .chezmoi.hostname }}
+@import "resolutions/1366x768.rasi"
+{{- else }}
 @import "resolutions/1920x1080.rasi"
+{{- end }}
 
 #window {
   width: 100%;
