@@ -121,7 +121,7 @@ let g:coc_global_extensions = [
 	\ 'coc-snippets',
 	\ 'coc-tsserver',
 	\ 'coc-vimlsp',
-	\ 'coc-rls'
+	\ 'coc-rust-analyzer'
 	\ ]
 " coc-lua dependencies: luarocks, lua-devel
 
