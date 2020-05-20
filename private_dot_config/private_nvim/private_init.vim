@@ -13,7 +13,6 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'SirVer/ultisnips' " snippet solution for neovim
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'benmills/vimux'
 Plug 'tpope/vim-dispatch'
 
 " Generic Programming Support 
@@ -112,6 +111,7 @@ let g:coc_global_extensions = [
 	\ 'coc-clangd',
 	\ 'coc-css',
 	\ 'coc-emmet',
+	\ 'coc-highlight',
 	\ 'coc-html',
 	\ 'coc-json',
 	\ 'coc-lua',
@@ -172,9 +172,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical" " If you want :UltiSnipsEdit to split your window.
 
-" Vim-Test Configuration
-let test#strategy = "vimux"
-
 " Fzf Configuration
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -224,6 +221,15 @@ let g:lua_complete_dynamic = 1
 """""""""""""""""""""""""""""""""""""
 let mapleader = ","
 let g:user_emmet_leader_key=','
+
+" Go to normal mode when typing jk
+imap jk <Esc>
+
+" Make typing more comfortable
+noremap é l
+noremap l k
+noremap k j
+noremap j h
 
 " Press space to toggle highlighting on/off, and show current value.
 :noremap <Space> :set hlsearch! hlsearch?<CR>
@@ -456,3 +462,5 @@ let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
 "
 let g:closetag_close_shortcut = '<leader>>'
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
