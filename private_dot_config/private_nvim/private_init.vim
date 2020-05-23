@@ -14,6 +14,7 @@ Plug 'SirVer/ultisnips' " snippet solution for neovim
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-surround'
 
 " Generic Programming Support 
 " Plugin 'jakedouglas/exuberant-ctags'
@@ -28,6 +29,8 @@ Plug 'alvan/vim-closetag'
 Plug 'reedes/vim-pencil'
 Plug 'tpope/vim-markdown'
 Plug 'dpelle/vim-LanguageTool'
+Plug 'lervag/vimtex'
+
 " Git Support
 Plug 'kablamo/vim-git-log'
 Plug 'gregsexton/gitv'
@@ -73,7 +76,13 @@ set ruler
 
 " Set Proper Tabs
 set tabstop=4
-set shiftwidth=4
+set textwidth=79  " lines longer than 79 columns will be broken
+set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
+set tabstop=4     " a hard TAB displays as 4 columns
+set expandtab     " insert spaces when hitting TABs
+set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
+set shiftround    " round indent to multiple of 'shiftwidth'
+set autoindent    " align the new line indent with the previous line
 set smarttab
 "set expandtab
 set noexpandtab
@@ -119,9 +128,11 @@ let g:coc_global_extensions = [
 	\ 'coc-phpls',
 	\ 'coc-python',
 	\ 'coc-snippets',
+	\ 'coc-vimtex',
 	\ 'coc-tsserver',
 	\ 'coc-vimlsp',
-	\ 'coc-rust-analyzer'
+	\ 'coc-rust-analyzer',
+	\ 'coc-git'
 	\ ]
 " coc-lua dependencies: luarocks, lua-devel
 
