@@ -100,7 +100,7 @@ export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
 
 # Rust
 export CARGO_HOME=$XDG_DATA_HOME/cargo
-export RUSTUP_HOME="$XDG_DATA/rustup"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
