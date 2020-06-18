@@ -2,7 +2,7 @@
  * Allows to change the settings of every menu simply by editing this file
  */
 @import "colorschemes/dark-steel-blue.rasi"
-{{- if contains "laptop" .chezmoi.hostname }}
+{{- if eq .computer_type "laptop" }}
 @import "resolutions/1366x768.rasi"
 {{- else }}
 @import "resolutions/1920x1080.rasi"

@@ -39,7 +39,7 @@ fi
 # Daemonize compton
 run compton -c --backend glx --vsync opengl-swc --blur-background
 
-{{- if contains "laptop" .chezmoi.hostname }}
+{{- if eq .computer_type "laptop" }}
 
 # Wifi applet
 run nm-applet

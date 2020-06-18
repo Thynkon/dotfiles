@@ -42,7 +42,7 @@ theme.useless_gap                   = dpi(4)
 theme.icon_widget_width				= dpi(30)
 theme.font_icons					= "MesloLGS NF"
 
-{{- if contains "laptop" .chezmoi.hostname }}
+{{- if eq .computer_type "laptop" }}
 -- battery
 theme.battery_icon_bg				= "#eC6798"
 theme.battery_icon_font_size		= 20
@@ -148,7 +148,7 @@ theme.volume_loud					= "墳"
 
 local separator = wibox.widget.imagebox(theme.separator)
 
-{{- if contains "laptop" .chezmoi.hostname }}
+{{- if eq .computer_type "laptop" }}
 -- Battery
 local battery_icon			= wibox.widget.textbox()
 battery_icon.forced_width	= theme.icon_widget_width
@@ -630,7 +630,7 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray({visible = true}),
 			separator,
-{{- if contains "laptop" .chezmoi.hostname }}
+{{- if eq .computer_type "laptop" }}
 			battery_icon_widget,
 			battery_widget,
 			separator,
