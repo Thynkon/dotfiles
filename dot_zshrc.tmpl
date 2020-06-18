@@ -90,7 +90,11 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 # Java
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 # get current java path
+{{- if eq .chezmoi.osRelease.idLike "arch"}}
+export JAVA_HOME="/usr/lib/jvm/default"
+{{- else}}
 export JAVA_HOME=$(update-alternatives --list | grep 'java ' | awk '{print $3}' | sed 's/openjdk.*/openjdk/')
+{{- end}}
 
 # KDE
 export KDEHOME="$XDG_CONFIG_HOME"/kde
