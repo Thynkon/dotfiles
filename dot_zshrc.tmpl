@@ -6,6 +6,9 @@ export XDG_DATA_HOME=$HOME/.local/share
 # Define a custom file for compdump
 # oh-my-zsh uses this variable and calls compinit
 ZSH_CACHE_DIR="${XDG_CACHE_HOME}/zsh"
+if [[ ! -d "${ZSH_CACHE_DIR}" ]]; then
+	mkdir -p "${ZSH_CACHE_DIR}"
+fi
 export ZSH_COMPDUMP=$ZSH_CACHE_DIR/.zcompdump-${(%):-%m}-${ZSH_VERSION}
 
 # Path to your oh-my-zsh installation.
