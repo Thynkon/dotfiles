@@ -11,7 +11,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar' " side bar
 Plug 'wesQ3/vim-windowswap'
 Plug 'SirVer/ultisnips' " snippet solution for neovim
-Plug 'junegunn/fzf', { 'do': './install --all' }
+"Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
