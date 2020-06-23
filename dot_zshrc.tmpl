@@ -157,7 +157,11 @@ PATH=$HOME/.local/bin:$PATH
 export PATH
 
 # Enable fzf completions
+{{- if and (.chezmoi.osRelease.idLike) (eq .chezmoi.osRelease.idLike "arch") }}
+source /usr/share/fzf/key-bindings.zsh
+{{- else }}
 source /usr/share/fzf/shell/key-bindings.zsh
+{{- end}}
 
 ### Functions
 getspec() {
