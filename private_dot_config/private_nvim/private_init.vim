@@ -117,6 +117,7 @@ let g:spacegray_italicize_comments = 1
 
 " Coc extensions
 let g:coc_global_extensions = [
+	\ 'coc-sh',
 	\ 'coc-clangd',
 	\ 'coc-css',
 	\ 'coc-emmet',
@@ -132,6 +133,7 @@ let g:coc_global_extensions = [
 	\ 'coc-tsserver',
 	\ 'coc-vimlsp',
 	\ 'coc-rust-analyzer',
+	\ 'coc-solargraph',
 	\ 'coc-git'
 	\ ]
 " coc-lua dependencies: luarocks, lua-devel
