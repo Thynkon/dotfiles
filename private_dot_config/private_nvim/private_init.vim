@@ -11,10 +11,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar' " side bar
 Plug 'wesQ3/vim-windowswap'
 Plug 'SirVer/ultisnips' " snippet solution for neovim
-"Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
+Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-sleuth'
 
 " Generic Programming Support 
 " Plugin 'jakedouglas/exuberant-ctags'
@@ -41,7 +42,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Python
-Plug 'Vimjas/vim-python-pep8-indent' " pep8 indentation
+" pep8 indentation
+Plug 'Vimjas/vim-python-pep8-indent'
+
 " Theme / Interface
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
@@ -49,6 +52,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'daylerees/colour-schemes'
 Plug 'tomasiser/vim-code-dark'
 Plug 'flrnprz/plastic.vim'
+Plug 'chuling/equinusocio-material.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -64,7 +68,6 @@ set encoding=utf8
 " set cursor to terminal like
 set guicursor=
 
-
 " Incrementally highlights ALL pattern matches
 set incsearch
 set autoindent
@@ -74,18 +77,10 @@ set number
 set relativenumber
 set ruler
 
-" Set Proper Tabs
-set tabstop=4
-set textwidth=79  " lines longer than 79 columns will be broken
-set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
-set tabstop=4     " a hard TAB displays as 4 columns
-set expandtab     " insert spaces when hitting TABs
-set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
-set shiftround    " round indent to multiple of 'shiftwidth'
-set autoindent    " align the new line indent with the previous line
-set smarttab
-"set expandtab
-set noexpandtab
+" lines longer than 79 columns will be broken
+set textwidth=79
+" align the new line indent with the previous line
+set autoindent
 
 " Copy to system's clipboard using yy
 set clipboard=unnamed
@@ -94,40 +89,68 @@ set clipboard=unnamed
 set laststatus=2
 
 " Enable Elite mode, No ARRRROWWS!!!!
-let g:elite_mode=1
+let g:elite_mode = 1
 
 " Enable highlighting of the current line
 set cursorline
+
+" Access colors present in 256 colorspace
+let base16colorspace=256
+
+" use a different style
+" valid values: 'default' (default), 'darker', 'pure'
+let g:equinusocio_material_style = 'default'
+" which means some colors will be modified by this formula:
+" (r, g, b) -> ( max(r - less, 0), max(g - less, 0), max(b - less, 0) )
+let g:equinusocio_material_less = 50
+
+" make vertsplit invisible (visible by default) (default 0)
+" if style == 'pure', then the vertsplit is always visible
+let g:equinusocio_material_hide_vertsplit = 1
+
+" parentheses improved (default 0)
+" enabling this option with 'luochen1990/rainbow' installed is not encouraged
+" because this option and 'luochen1990/rainbow' will registry conflicting events
+" in summary:
+" 1. no 'luochen1990/rainbow' installed, no parentheses improved: nothing to do (default 0)
+" 2. no 'luochen1990/rainbow' installed, want built-in parentheses improved: set to 1
+" 3. 'luochen1990/rainbow' installed: nothing to do (default 0)
+let g:equinusocio_material_bracket_improved = 1
+
+" use a better vertsplit char
+set fillchars+=vert:│
 
 " Theme and Styling 
 set t_Co=256
 set background=dark
 
-if (has("termguicolors"))                                                                                                                                                                
+if has('termguicolors')
   set termguicolors
 endif
 
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme plastic
+" Access colors present in 256 colorspace
+let base16colorspace=256
+colorscheme equinusocio_material
 
 let g:spacegray_underline_search = 1
-let g:spacegray_italicize_comments = 1
+let g:spacegray_italicize_comments =1
 
 " Coc configuration
 
 " Coc extensions
 let g:coc_global_extensions = [
-	\ 'coc-sh',
 	\ 'coc-clangd',
 	\ 'coc-css',
 	\ 'coc-emmet',
 	\ 'coc-highlight',
 	\ 'coc-html',
+	\ 'coc-java',
 	\ 'coc-json',
 	\ 'coc-lua',
 	\ 'coc-sql',
 	\ 'coc-phpls',
 	\ 'coc-python',
+	\ 'coc-sh',
 	\ 'coc-snippets',
 	\ 'coc-vimtex',
 	\ 'coc-tsserver',
@@ -141,7 +164,10 @@ let g:coc_global_extensions = [
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1 
-let g:airline_theme='hybrid'
+let g:airline_theme='equinusocio_material'
+let g:lightline = {
+  \ 'colorscheme': 'equinusocio_material',
+  \ }
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1 
 
@@ -220,11 +246,14 @@ let g:fzf_colors =
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.                                                                                                                     
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:rg_derive_root='true'
 
 "Lua
 let g:lua_check_syntax = 1
 let g:lua_complete_omni = 1
 let g:lua_complete_dynamic = 1
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 
 " Python
@@ -259,10 +288,10 @@ nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
                                                                                                                                                                                          
-" Shortcuts
+" Fzf shortcuts
 nnoremap <Leader>o :Files<CR>
-nnoremap <Leader>O :CtrlP<CR>
-nnoremap <Leader>w :w<CR>
+nnoremap <C-p> :FZF<CR>
+nnoremap \ :Rg<CR>
 
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -310,7 +339,8 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -319,6 +349,9 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<C-j>'
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -477,3 +510,27 @@ let g:closetag_shortcut = '>'
 let g:closetag_close_shortcut = '<leader>>'
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
