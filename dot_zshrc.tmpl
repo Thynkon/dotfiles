@@ -57,7 +57,13 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 # VIM mode
 bindkey -v
-export KEYTIMEOUT=1
+
+# Map "jk" to "esc"
+bindkey 'jk' vi-cmd-mode
+# If KEYTIMEOUT is lesser than 20ms the
+# keybing above wont work
+
+export KEYTIMEOUT=20
 
 ### EDITORS
 VISUAL=nvim
@@ -150,6 +156,9 @@ PATH=$HOME/dev/GitAhead:$PATH
 
 # Mess-cleaner
 PATH=$HOME/dev/mess-cleaner:$PATH
+
+# NPM
+PATH=$XDG_DATA_HOME/npm/bin/:$PATH
 
 # Ruby
 PATH=$GEM_HOME/bin:$PATH
