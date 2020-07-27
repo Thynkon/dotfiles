@@ -53,6 +53,7 @@ Plug 'daylerees/colour-schemes'
 Plug 'tomasiser/vim-code-dark'
 Plug 'flrnprz/plastic.vim'
 Plug 'chuling/equinusocio-material.vim'
+Plug 'mhartington/oceanic-next'
 
 " Initialize plugin system
 call plug#end()
@@ -130,8 +131,7 @@ endif
 
 " Access colors present in 256 colorspace
 let base16colorspace=256
-colorscheme equinusocio_material
-
+colorscheme OceanicNext
 let g:spacegray_underline_search = 1
 let g:spacegray_italicize_comments =1
 
@@ -164,10 +164,7 @@ let g:coc_global_extensions = [
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1 
-let g:airline_theme='equinusocio_material'
-let g:lightline = {
-  \ 'colorscheme': 'equinusocio_material',
-  \ }
+let g:airline_theme='oceanicnext'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1 
 
