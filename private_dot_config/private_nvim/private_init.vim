@@ -46,14 +46,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Vimjas/vim-python-pep8-indent'
 
 " Theme / Interface
-Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'daylerees/colour-schemes'
-Plug 'tomasiser/vim-code-dark'
-Plug 'flrnprz/plastic.vim'
-Plug 'chuling/equinusocio-material.vim'
-Plug 'mhartington/oceanic-next'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sainnhe/edge'
 
 " Initialize plugin system
 call plug#end()
@@ -98,29 +94,6 @@ set cursorline
 " Access colors present in 256 colorspace
 let base16colorspace=256
 
-" use a different style
-" valid values: 'default' (default), 'darker', 'pure'
-let g:equinusocio_material_style = 'default'
-" which means some colors will be modified by this formula:
-" (r, g, b) -> ( max(r - less, 0), max(g - less, 0), max(b - less, 0) )
-let g:equinusocio_material_less = 50
-
-" make vertsplit invisible (visible by default) (default 0)
-" if style == 'pure', then the vertsplit is always visible
-let g:equinusocio_material_hide_vertsplit = 1
-
-" parentheses improved (default 0)
-" enabling this option with 'luochen1990/rainbow' installed is not encouraged
-" because this option and 'luochen1990/rainbow' will registry conflicting events
-" in summary:
-" 1. no 'luochen1990/rainbow' installed, no parentheses improved: nothing to do (default 0)
-" 2. no 'luochen1990/rainbow' installed, want built-in parentheses improved: set to 1
-" 3. 'luochen1990/rainbow' installed: nothing to do (default 0)
-let g:equinusocio_material_bracket_improved = 1
-
-" use a better vertsplit char
-set fillchars+=vert:│
-
 " Theme and Styling 
 set t_Co=256
 set background=dark
@@ -131,9 +104,20 @@ endif
 
 " Access colors present in 256 colorspace
 let base16colorspace=256
-colorscheme OceanicNext
+" the configuration options should be placed before `colorscheme edge`
+let g:edge_style = 'aura'
+let g:edge_disable_italic_comment = 1
+colorscheme edge
+
 let g:spacegray_underline_search = 1
 let g:spacegray_italicize_comments =1
+
+" Vim-Airline Configuration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='edge'
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
 
 " Coc configuration
 
@@ -160,13 +144,6 @@ let g:coc_global_extensions = [
     \ 'coc-git'
     \ ]
 " coc-lua dependencies: luarocks, lua-devel
-
-" Vim-Airline Configuration
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1 
-let g:airline_theme='oceanicnext'
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 
 
 " Syntastic Configuration
 set statusline+=%#warningmsg#
