@@ -201,6 +201,9 @@ augroup pencil
   autocmd FileType text         call pencil#init()
 augroup END
 
+" Latex
+let g:tex_flavor = 'latex'
+
 " Vim-UtilSnips Configuration
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
