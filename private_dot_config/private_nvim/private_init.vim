@@ -139,26 +139,26 @@ let g:spacegray_italicize_comments =1
 
 " Coc extensions
 let g:coc_global_extensions = [
-	\ 'coc-clangd',
-	\ 'coc-css',
-	\ 'coc-emmet',
-	\ 'coc-highlight',
-	\ 'coc-html',
-	\ 'coc-java',
-	\ 'coc-json',
-	\ 'coc-lua',
-	\ 'coc-sql',
-	\ 'coc-phpls',
-	\ 'coc-python',
-	\ 'coc-sh',
-	\ 'coc-snippets',
-	\ 'coc-vimtex',
-	\ 'coc-tsserver',
-	\ 'coc-vimlsp',
-	\ 'coc-rust-analyzer',
-	\ 'coc-solargraph',
-	\ 'coc-git'
-	\ ]
+    \ 'coc-clangd',
+    \ 'coc-css',
+    \ 'coc-emmet',
+    \ 'coc-highlight',
+    \ 'coc-html',
+    \ 'coc-java',
+    \ 'coc-json',
+    \ 'coc-lua',
+    \ 'coc-sql',
+    \ 'coc-phpls',
+    \ 'coc-python',
+    \ 'coc-sh',
+    \ 'coc-snippets',
+    \ 'coc-vimtex',
+    \ 'coc-tsserver',
+    \ 'coc-vimlsp',
+    \ 'coc-rust-analyzer',
+    \ 'coc-solargraph',
+    \ 'coc-git'
+    \ ]
 " coc-lua dependencies: luarocks, lua-devel
 
 " Vim-Airline Configuration
