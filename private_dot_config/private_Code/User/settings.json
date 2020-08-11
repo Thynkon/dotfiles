@@ -15,4 +15,5 @@
     },
     "java.semanticHighlighting.enabled": true,
     "files.autoSave": "afterDelay",
+    "terminal.integrated.shell.linux": "/usr/bin/zsh",
 }

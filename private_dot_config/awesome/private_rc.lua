@@ -29,8 +29,8 @@ local lain          = require("lain")
 -- when client with a matching name is opened:
 local hotkeys_popup = require("awful.hotkeys_popup").widget
                       require("awful.hotkeys_popup.keys")
-local table			= awful.util.table or gears.table -- 4.{0,1} compatibility
-local dpi			= require("beautiful.xresources").apply_dpi
+local table         = awful.util.table or gears.table -- 4.{0,1} compatibility
+local dpi           = require("beautiful.xresources").apply_dpi
 -- }}}
 
 -- {{{ Error handling
@@ -72,9 +72,9 @@ end
 local rofi_config = string.format("%s/.config/rofi", os.getenv("HOME"))
 
 local themes = {
-	"no-wibar",
-	"holo",
-	"theme8",
+    "no-wibar",
+    "holo",
+    "theme8",
 }
 
 -- choose your theme here
@@ -83,24 +83,24 @@ local chosen_theme = themes[3]
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
 
-local modkey	= "Mod1"
-local superkey	= "Mod4"
-local ctrlkey	= "Control"
+local modkey    = "Mod1"
+local superkey  = "Mod4"
+local ctrlkey   = "Control"
 
 -- personal variables
 --change these variables if you want
-local browser				= "firefox"
-local editorgui				= "code"
-local filemanager			= "dolphin"
-local mailclient			= "thunderbird"
-local imageeditor			= "gimp"
-local terminal				= "alacritty"
-local virtualmachine		= "virtualbox"
-local screenshotutility		= "spectacle"
-local desktopenvironment	= "KDE"
-local volume_step			= 5
-local brightness_step		= 10
-local bar					= "wibar"
+local browser               = "firefox"
+local editorgui             = "code"
+local filemanager           = "dolphin"
+local mailclient            = "thunderbird"
+local imageeditor           = "gimp"
+local terminal              = "alacritty"
+local virtualmachine        = "virtualbox"
+local screenshotutility     = "spectacle"
+local desktopenvironment    = "KDE"
+local volume_step           = 5
+local brightness_step       = 10
+local bar                   = "wibar"
 
 -- awesome variables
 awful.util.terminal = terminal
@@ -172,10 +172,10 @@ end)
 
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(
-	function(s) beautiful.at_screen_connect(s)
---		s.systray = wibox.widget.systray()
---		s.systray.visible = true
-	end
+    function(s) beautiful.at_screen_connect(s)
+--      s.systray = wibox.widget.systray()
+--      s.systray.visible = true
+    end
 )
 -- }}}
 
@@ -188,115 +188,115 @@ root.buttons(table.join(
 
 -- {{{ Key bindings
 globalkeys = table.join(
-	-- awesome
+    -- awesome
     -- Show/Hide Wibox
-	awful.key({ modkey }, "b", function ()
-			for s in screen do
-				s.topwibox.visible = not s.topwibox.visible
-				if s.bottomwibox then
-					s.bottomwibox.visible = not s.bottomwibox.visible
-				end
-			end
-		end,
-		{description = "toggle wibox", group = "awesome"}),
-	awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey }, "b", function ()
+            for s in screen do
+                s.topwibox.visible = not s.topwibox.visible
+                if s.bottomwibox then
+                    s.bottomwibox.visible = not s.bottomwibox.visible
+                end
+            end
+        end,
+        {description = "toggle wibox", group = "awesome"}),
+    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description = "show help", group="awesome"}),
-	 -- Show/Hide Systray
-	awful.key({ modkey }, "KP_Subtract",
-		function ()
-			awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
-		end,
-		{description = "Toggle systray visibility", group = "awesome"}),
-	awful.key({ modkey, "Shift" }, "r", awesome.restart,
-		{description = "reload awesome", group = "awesome"}),
-	awful.key({ superkey }, "x",
-		function ()
-			awful.prompt.run {
-			  prompt       = "Run Lua code: ",
-			  textbox      = awful.screen.focused().promptbox.widget,
-			  exe_callback = awful.util.eval,
-			  history_path = awful.util.get_cache_dir() .. "/history_eval"
-			}
-		end,
-		{description = "lua execute prompt", group = "awesome"}),
+     -- Show/Hide Systray
+    awful.key({ modkey }, "KP_Subtract",
+        function ()
+            awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+        end,
+        {description = "Toggle systray visibility", group = "awesome"}),
+    awful.key({ modkey, "Shift" }, "r", awesome.restart,
+        {description = "reload awesome", group = "awesome"}),
+    awful.key({ superkey }, "x",
+        function ()
+            awful.prompt.run {
+              prompt       = "Run Lua code: ",
+              textbox      = awful.screen.focused().promptbox.widget,
+              exe_callback = awful.util.eval,
+              history_path = awful.util.get_cache_dir() .. "/history_eval"
+            }
+        end,
+        {description = "lua execute prompt", group = "awesome"}),
 
-	-- launcher
+    -- launcher
     awful.key({ modkey }, "Return",
-		function () awful.spawn(terminal) end,
-		{description = terminal, group = "launcher"}),
+        function () awful.spawn(terminal) end,
+        {description = terminal, group = "launcher"}),
     awful.key({ modkey, "Shift"}, "h",
-		function () awful.spawn( string.format("%s -t 'htop task manager' -e htop", terminal)) end,
+        function () awful.spawn( string.format("%s -t 'htop task manager' -e htop", terminal)) end,
         {description = "htop", group = "launcher"}),
     awful.key({ modkey }, "r",
-		function () awful.spawn( "rofi-theme-selector" ) end,
+        function () awful.spawn( "rofi-theme-selector" ) end,
         {description = "rofi theme selector", group = "launcher"}),
     awful.key({ modkey }, "v",
-		function () awful.spawn( "pavucontrol" ) end,
+        function () awful.spawn( "pavucontrol" ) end,
         {description = "pulseaudio control", group = "launcher"}),
     awful.key({ modkey }, "w",
-		function () awful.spawn( browser ) end,
+        function () awful.spawn( browser ) end,
         {description = browser, group = "launcher"}),
     awful.key({ modkey, "Shift" },"e",
-		function () awful.spawn( editorgui ) end,
+        function () awful.spawn( editorgui ) end,
         {description = editorgui , group = "launcher" }),
     awful.key({ modkey }, "F3",
-		function () awful.spawn( "inkscape" ) end,
+        function () awful.spawn( "inkscape" ) end,
         {description = "inkscape", group = "launcher" }),
     awful.key({ modkey }, "g",
-		function () awful.spawn( imageeditor ) end,
+        function () awful.spawn( imageeditor ) end,
         {description = imageeditor , group = "launcher" }),
     awful.key({ modkey }, "F6",
-		function () awful.spawn( "vlc --video-on-top" ) end,
+        function () awful.spawn( "vlc --video-on-top" ) end,
         {description = "vlc" , group = "launcher" }),
     awful.key({ modkey }, "F7",
-		function () awful.spawn( "virtualbox" ) end,
+        function () awful.spawn( "virtualbox" ) end,
         {description = virtualmachine , group = "launcher" }),
     awful.key({ modkey }, "e",
-		function () awful.spawn( filemanager ) end,
+        function () awful.spawn( filemanager ) end,
         {description = filemanager , group = "launcher" }),
     awful.key({ modkey }, "F9",
-		function () awful.spawn( mailclient ) end,
+        function () awful.spawn( mailclient ) end,
         {description = mailclient , group = "launcher"}),
     awful.key({ modkey }, "d",
-		function () awful.spawn(string.format("%s/scripts/appsmenu.sh", rofi_config)) end,
+        function () awful.spawn(string.format("%s/scripts/appsmenu.sh", rofi_config)) end,
         {description = "rofi" , group = "launcher" }),
     awful.key({ modkey }, "y",
-		function () awful.spawn(string.format("%s/.local/bin/udiskie-dmenu", os.getenv("HOME"))) end,
-		{description = "Device manager", group = "launcher"}),
+        function () awful.spawn(string.format("%s/.local/bin/udiskie-dmenu", os.getenv("HOME"))) end,
+        {description = "Device manager", group = "launcher"}),
 
-	-- super + ...
+    -- super + ...
     awful.key({ modkey }, "u",
-		function () awful.screen.focused().promptbox:run() end,
+        function () awful.screen.focused().promptbox:run() end,
           {description = "run prompt", group = "super"}),
     awful.key({ modkey }, "x",
-		function () awful.spawn( "oblogout" ) end,
+        function () awful.spawn( "oblogout" ) end,
       {description = "exit", group = "hotkeys"}),
     awful.key({ modkey }, "Escape",
-		function () awful.spawn( "xkill" ) end,
+        function () awful.spawn( "xkill" ) end,
         {description = "Kill proces", group = "hotkeys"}),
 
-	-- ctrl+alt +  ...
+    -- ctrl+alt +  ...
     awful.key({ ctrlkey, superkey   }, "c", function() awful.spawn("catfish") end,
         {description = "catfish", group = "alt+ctrl"}),
     awful.key({ ctrlkey, superkey   }, "o",
-		function() awful.spawn.with_shell("$HOME/.config/awesome/scripts/compton-toggle.sh") end,
+        function() awful.spawn.with_shell("$HOME/.config/awesome/scripts/compton-toggle.sh") end,
         {description = "Compton toggle", group = "alt+ctrl"}),
     awful.key({ ctrlkey, superkey   }, "m",
-		function() awful.spawn("systemsettings5") end,
+        function() awful.spawn("systemsettings5") end,
         {description = string.format("%s settings manager", desktopenvironment), group = "alt+ctrl"}),
     awful.key({ ctrlkey, superkey   }, "p",
-		function() awful.spawn( "plasma-discover" ) end,
+        function() awful.spawn( "plasma-discover" ) end,
         {description = string.format("%s store", desktopenvironment), group = "alt+ctrl"}),
     -- screenshots
     awful.key({ }, "Print",
-		function () awful.spawn(screenshotutility) end,
+        function () awful.spawn(screenshotutility) end,
         {description = "KDE screenshot", group = "screenshots"}),
 
     -- Default client focus
     awful.key({ modkey,           }, "k",
         function ()
             awful.client.focus.bydirection("down")
-		end,
+        end,
         {description = "Focus down", group = "client"}
     ),
     awful.key({ modkey,           }, "l",
@@ -336,7 +336,7 @@ globalkeys = table.join(
         end,
         {description = "go back", group = "client"}),
 
-	-- Tag
+    -- Tag
     -- Tag browsing
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -367,7 +367,7 @@ globalkeys = table.join(
     awful.key({ modkey, "Shift" }, "d", function () lain.util.delete_tag() end,
               {description = "delete tag", group = "tag"}),
 
-	-- layout
+    -- layout
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incmwfact(-0.05)          end,
@@ -398,16 +398,16 @@ globalkeys = table.join(
 
     -- Brightness
     awful.key({ }, "XF86MonBrightnessUp",
-		function ()
-			os.execute(string.format("xbacklight -inc %d", brightness_step))
-		end,
-		{description = string.format("+%d%%", brightness_step), group = "hotkeys"}),
+        function ()
+            os.execute(string.format("xbacklight -inc %d", brightness_step))
+        end,
+        {description = string.format("+%d%%", brightness_step), group = "hotkeys"}),
 
     awful.key({ }, "XF86MonBrightnessDown",
-		function ()
-			os.execute(string.format("xbacklight -dec %d", brightness_step))
-		end,
-		{description = string.format("-%d%%", brightness_step), group = "hotkeys"}),
+        function ()
+            os.execute(string.format("xbacklight -dec %d", brightness_step))
+        end,
+        {description = string.format("-%d%%", brightness_step), group = "hotkeys"}),
 
     -- volume
     awful.key({ }, "XF86AudioRaiseVolume",
@@ -415,29 +415,29 @@ globalkeys = table.join(
             os.execute(string.format("amixer -q set %s %d%%+", beautiful.volume.channel, volume_step))
             beautiful.volume.update()
         end,
-		{description = string.format("+%d%%", volume_step), group = "audio"}),
+        {description = string.format("+%d%%", volume_step), group = "audio"}),
     awful.key({ }, "XF86AudioLowerVolume",
         function ()
             os.execute(string.format("amixer -q set %s %d%%-", beautiful.volume.channel, volume_step))
             beautiful.volume.update()
         end,
-		{description = string.format("-%d%%", volume_step), group = "audio"}),
+        {description = string.format("-%d%%", volume_step), group = "audio"}),
     awful.key({ }, "XF86AudioMute",
         function ()
             os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
             beautiful.volume.update()
         end,
-		{description = "Mute volume", group = "audio"}),
+        {description = "Mute volume", group = "audio"}),
 
     -- Copy primary to clipboard (terminals to gtk)
     awful.key({ ctrlkey, "Shift" }, "c", function () awful.spawn.with_shell("xsel | xsel -i -b") end,
               {description = "copy terminal to gtk", group = "hotkeys"}),
 
-	awful.key({ modkey, "Shift" }, "q",
-		function() os.execute("qdbus org.kde.ksmserver /KSMServer logout 1 0 0") end,
-		{description = "Logout with confirmation", group = "kde"}),
+    awful.key({ modkey, "Shift" }, "q",
+        function() os.execute("qdbus org.kde.ksmserver /KSMServer logout 1 0 0") end,
+        {description = "Logout with confirmation", group = "kde"}),
     awful.key({ ctrlkey, superkey   }, "k",
-		function() os.execute("loginctl lock-session") end,
+        function() os.execute("loginctl lock-session") end,
         {description = "Lock screen", group = "kde"})
 )
 
@@ -568,8 +568,8 @@ awful.rules.rules = {
      }
     },
 
-	-- Rules
-	-- use xprop | grep WM_CLASS to find rule's class name
+    -- Rules
+    -- use xprop | grep WM_CLASS to find rule's class name
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = false } },
@@ -615,7 +615,7 @@ awful.rules.rules = {
           "Imagewriter",
           "Font-manager",
           "Kruler",
-		},
+        },
 
         name = {
           "Event Tester",  -- xev.

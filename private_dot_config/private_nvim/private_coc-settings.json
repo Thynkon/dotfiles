@@ -1,9 +1,9 @@
 {
-	"suggest.detailMaxLength": 50,
-	"suggest.noselect": false,
-	"suggest.snippetIndicator": "►",
-	"python.jediEnabled": false,
-	"python.linting.flake8Enabled": true,
-	"python.analysis.diagnosticEnabled": false,
-	"suggest.enablePreview": true
+    "suggest.detailMaxLength": 50,
+    "suggest.noselect": false,
+    "suggest.snippetIndicator": "►",
+    "python.jediEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.analysis.diagnosticEnabled": false,
+    "suggest.enablePreview": true
 }

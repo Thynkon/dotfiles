@@ -7,7 +7,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 # oh-my-zsh uses this variable and calls compinit
 ZSH_CACHE_DIR="${XDG_CACHE_HOME}/zsh"
 if [[ ! -d "${ZSH_CACHE_DIR}" ]]; then
-	mkdir -p "${ZSH_CACHE_DIR}"
+    mkdir -p "${ZSH_CACHE_DIR}"
 fi
 export ZSH_COMPDUMP=$ZSH_CACHE_DIR/.zcompdump-${(%):-%m}-${ZSH_VERSION}
 
@@ -23,16 +23,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(
-	git
-	zsh-syntax-highlighting
-	alias-tips zsh-completions
-	zsh-autosuggestions
-	rust
-	cargo
-	rustup
-	docker
-	docker-compose
-	laravel
+    git
+    zsh-syntax-highlighting
+    alias-tips zsh-completions
+    zsh-autosuggestions
+    rust
+    cargo
+    rustup
+    docker
+    docker-compose
+    laravel
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -124,7 +124,7 @@ export VSCODE_EXTENSIONS="${XDG_DATA_HOME}/code/extensions"
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
 HISTFILE_DIR=$(dirname "${HISTFILE}")
 if [[ ! -f "${HISTFILE_DIR}" ]]; then
-	mkdir -p "${HISTFILE_DIR}"
+    mkdir -p "${HISTFILE_DIR}"
 fi
 
 # Powerlevel10k
@@ -180,5 +180,5 @@ source /usr/share/fzf/shell/key-bindings.zsh
 
 ### Functions
 getspec() {
-	rpm2cpio $1 | cpio -civ '*.spec'
+    rpm2cpio $1 | cpio -civ '*.spec'
 }
