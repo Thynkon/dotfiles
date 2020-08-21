@@ -118,7 +118,7 @@ export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 ## VS Code
-export VSCODE_EXTENSIONS="${XDG_DATA_HOME}/code/extensions"
+export VSCODE_EXTENSIONS="${XDG_DATA_HOME}/VSCodium/extensions"
 
 ## ZSH
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
@@ -142,14 +142,11 @@ fi
 
 ### PATH
 # Android studio
-PATH=$XDG_DATA_HOME/android-studio/bin:$PATH
+#PATH=$XDG_DATA_HOME/android-studio/bin:$PATH
 PATH=$PATH:/opt/gradle/bin:$PATH
 
 # Composer
 PATH=$HOME/.config/composer/vendor/bin:$PATH
-
-# Firefox developer edition
-PATH=$HOME/.local/opt/firefox/bin:$PATH
 
 # GitAhead
 PATH=$HOME/dev/GitAhead:$PATH
@@ -168,6 +165,8 @@ PATH=$XDG_DATA_HOME/cargo/bin:$PATH
 
 # Python virtualenv
 PATH=$HOME/.local/bin:$PATH
+
+PATH=$HOME/dev/servo/python:$PATH
 
 export PATH
 
