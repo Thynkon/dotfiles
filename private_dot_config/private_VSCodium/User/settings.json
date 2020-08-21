@@ -2,7 +2,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    "workbench.colorTheme": "One Dark Pro",
+    "workbench.colorTheme": "Atom One Dark",
     "window.zoomLevel": 1,
     "workbench.iconTheme": "material-icon-theme",
     "editor.suggestSelection": "first",
@@ -16,4 +16,6 @@
     "java.semanticHighlighting.enabled": true,
     "files.autoSave": "afterDelay",
     "terminal.integrated.shell.linux": "/usr/bin/zsh",
+    "php.validate.enable": true,
+    "php.validate.executablePath": "/usr/bin/php",
 }
