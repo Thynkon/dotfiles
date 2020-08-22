@@ -89,7 +89,7 @@ local ctrlkey   = "Control"
 
 -- personal variables
 --change these variables if you want
-local browser               = "firefox"
+local browser               = "firefox-developer"
 local editorgui             = "code"
 local filemanager           = "dolphin"
 local mailclient            = "thunderbird"
