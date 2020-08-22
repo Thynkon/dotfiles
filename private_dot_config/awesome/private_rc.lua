@@ -258,7 +258,7 @@ globalkeys = table.join(
         function () awful.spawn( mailclient ) end,
         {description = mailclient , group = "launcher"}),
     awful.key({ modkey }, "d",
-        function () awful.spawn(string.format("%s/scripts/appsmenu.sh", rofi_config)) end,
+        function () awful.spawn(string.format("%s/bin/app_launcher.sh", rofi_config)) end,
         {description = "rofi" , group = "launcher" }),
     awful.key({ modkey }, "y",
         function () awful.spawn(string.format("%s/.local/bin/udiskie-dmenu", os.getenv("HOME"))) end,
@@ -434,7 +434,7 @@ globalkeys = table.join(
               {description = "copy terminal to gtk", group = "hotkeys"}),
 
     awful.key({ modkey, "Shift" }, "q",
-        function() os.execute("qdbus org.kde.ksmserver /KSMServer logout 1 0 0") end,
+        function () awful.spawn(string.format("%s/bin/menu_powermenu.sh", rofi_config)) end,
         {description = "Logout with confirmation", group = "kde"}),
     awful.key({ ctrlkey, superkey   }, "k",
         function() os.execute("loginctl lock-session") end,
