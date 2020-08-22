@@ -38,16 +38,21 @@ fi
 
 # Daemonize compton
 run compton -c --backend glx --vsync opengl-swc --blur-background
+run /usr/libexec/kf5/polkit-kde-authentication-agent-1
+run bitcoin -min
+# keyboard software
+run ckb-next --background
+# email
+run protonmail-bridge --no-window
+run nextcloud
 
 {{- if eq .computer_type "laptop" }}
-
 # Wifi applet
 run nm-applet
 {{- end }}
 
 # Blue light filter
 run redshift
-
 # Device manager
 run udiskie
 
