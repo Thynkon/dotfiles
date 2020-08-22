@@ -90,7 +90,7 @@ local ctrlkey   = "Control"
 -- personal variables
 --change these variables if you want
 local browser               = "firefox-developer"
-local editorgui             = "code"
+local editorgui             = string.format("codium --extensions-dir='%s/.local/share/VSCodium/extensions'", os.getenv("HOME"))
 local filemanager           = "dolphin"
 local mailclient            = "thunderbird"
 local imageeditor           = "gimp"
