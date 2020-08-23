@@ -38,7 +38,9 @@ fi
 
 # Daemonize compton
 run compton -c --backend glx --vsync opengl-swc --blur-background
+{{- if eq .chezmoi.osRelease.id "fedora" }}
 run /usr/libexec/kf5/polkit-kde-authentication-agent-1
+{{- end }}
 run bitcoin -min
 # email
 run protonmail-bridge --no-window
@@ -51,6 +53,10 @@ run nm-applet
 # keyboard software
 run ckb-next --background
 {{- end }}
+
+{{- if eq (index .chezmoi.osRelease "idLike") "arch" }}
+run pamac
+{{- end}}
 
 # Blue light filter
 run redshift

@@ -31,9 +31,9 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
                       require("awful.hotkeys_popup.keys")
 local table         = awful.util.table or gears.table -- 4.{0,1} compatibility
 local dpi           = require("beautiful.xresources").apply_dpi
--- }}}
+-- 
 
--- {{{ Error handling
+-- Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
@@ -55,9 +55,9 @@ do
         in_error = false
     end)
 end
--- }}}
+-- 
 
--- {{{ Autostart windowless processes
+-- Autostart windowless processes
 
 -- This function will run once every time Awesome is started
 local function run_once(cmd_arr)
@@ -66,9 +66,9 @@ local function run_once(cmd_arr)
     end
 end
 
--- }}}
+-- 
 
--- {{{ Variable definitions
+-- Variable definitions
 local rofi_config = string.format("%s/.config/rofi", os.getenv("HOME"))
 
 local themes = {
@@ -89,15 +89,23 @@ local ctrlkey   = "Control"
 
 -- personal variables
 --change these variables if you want
-local browser               = "firefox-developer"
-local editorgui             = string.format("codium --extensions-dir='%s/.local/share/VSCodium/extensions'", os.getenv("HOME"))
+local browser               = "firefox-developer-edition"
+local editorgui             = "codium"
+{{- if eq (index .chezmoi.osRelease "idLike") "arch" }}
+local filemanager           = "thunar"
+{{- else }}
 local filemanager           = "dolphin"
+{{- end }}
 local mailclient            = "thunderbird"
 local imageeditor           = "gimp"
 local terminal              = "alacritty"
 local virtualmachine        = "virtualbox"
-local screenshotutility     = "spectacle"
+local screenshotutility     = "flameshot gui"
+{{- if eq (index .chezmoi.osRelease "idLike") "arch" }}
+local desktopenvironment    = "XFCE"
+{{- else }}
 local desktopenvironment    = "KDE"
+{{- end }}
 local volume_step           = 5
 local brightness_step       = 10
 local bar                   = "wibar"
@@ -142,9 +150,9 @@ lain.layout.cascade.tile.nmaster       = 5
 lain.layout.cascade.tile.ncol          = 2
 
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
--- }}}
+-- 
 
--- {{{ Screen
+-- Screen
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", function(s)
     -- Wallpaper
@@ -177,16 +185,16 @@ awful.screen.connect_for_each_screen(
 --      s.systray.visible = true
     end
 )
--- }}}
+-- 
 
--- {{{ Mouse bindings
+-- Mouse bindings
 root.buttons(table.join(
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
--- }}}
+-- 
 
--- {{{ Key bindings
+-- Key bindings
 globalkeys = table.join(
     -- awesome
     -- Show/Hide Wibox
@@ -237,7 +245,10 @@ globalkeys = table.join(
         function () awful.spawn( browser ) end,
         {description = browser, group = "launcher"}),
     awful.key({ modkey, "Shift" },"e",
-        function () awful.spawn( editorgui ) end,
+        function () awful.spawn( string.format(
+            "%s --extensions-dir='%s/.local/share/VSCodium/extensions'", editorgui,
+            os.getenv("HOME"))
+        ) end,
         {description = editorgui , group = "launcher" }),
     awful.key({ modkey }, "F3",
         function () awful.spawn( "inkscape" ) end,
@@ -281,16 +292,25 @@ globalkeys = table.join(
     awful.key({ ctrlkey, superkey   }, "o",
         function() awful.spawn.with_shell("$HOME/.config/awesome/scripts/compton-toggle.sh") end,
         {description = "Compton toggle", group = "alt+ctrl"}),
+{{- if eq (index .chezmoi.osRelease "idLike") "arch" }}
+    awful.key({ ctrlkey, superkey   }, "m",
+        function() awful.spawn("xfce4-settings-manager") end,
+        {description = string.format("%s settings manager", desktopenvironment), group = "alt+ctrl"}),
+    awful.key({ ctrlkey, superkey   }, "p",
+        function() awful.spawn( "pamac-manager" ) end,
+        {description = string.format("%s store", desktopenvironment), group = "alt+ctrl"}),
+{{- else }}
     awful.key({ ctrlkey, superkey   }, "m",
         function() awful.spawn("systemsettings5") end,
         {description = string.format("%s settings manager", desktopenvironment), group = "alt+ctrl"}),
     awful.key({ ctrlkey, superkey   }, "p",
         function() awful.spawn( "plasma-discover" ) end,
         {description = string.format("%s store", desktopenvironment), group = "alt+ctrl"}),
+{{- end}}
     -- screenshots
     awful.key({ }, "Print",
         function () awful.spawn(screenshotutility) end,
-        {description = "KDE screenshot", group = "screenshots"}),
+        {description = "Screenshot", group = "screenshots"}),
 
     -- Default client focus
     awful.key({ modkey,           }, "k",
@@ -435,10 +455,10 @@ globalkeys = table.join(
 
     awful.key({ modkey, "Shift" }, "q",
         function () awful.spawn(string.format("%s/bin/menu_powermenu.sh", rofi_config)) end,
-        {description = "Logout with confirmation", group = "kde"}),
+        {description = "Logout with confirmation", group = desktopenvironment}),
     awful.key({ ctrlkey, superkey   }, "k",
         function() os.execute("loginctl lock-session") end,
-        {description = "Lock screen", group = "kde"})
+        {description = "Lock screen", group = desktopenvironment})
 )
 
 clientkeys = table.join(
@@ -549,9 +569,9 @@ clientbuttons = gears.table.join(
 
 -- Set keys
 root.keys(globalkeys)
--- }}}
+-- 
 
--- {{{ Rules
+-- Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.
@@ -628,9 +648,9 @@ awful.rules.rules = {
         }
       }, properties = { floating = true }},
 }
--- }}}
+-- 
 
--- {{{ Signals
+-- Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
@@ -647,6 +667,6 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
+-- 
 
 awful.spawn.with_shell(string.format("%s/.config/awesome/autostart.sh -b %s", os.getenv("HOME"), bar))
