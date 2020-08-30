@@ -59,13 +59,15 @@ run ckb-next --background
 {{- end }}
 
 {{- if eq (index .chezmoi.osRelease "idLike") "arch" }}
-run pamac
+run pamac-tray
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 gnome-keyring-daemon -r -d
 {{- end}}
 
 # Blue light filter
 run redshift
+
+run safeeyes
 
 # Device manager
 run udiskie
