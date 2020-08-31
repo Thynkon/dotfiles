@@ -45,6 +45,12 @@ run /usr/libexec/kf5/polkit-kde-authentication-agent-1
 
 run bitcoin -min
 
+{{- if eq (index .chezmoi.osRelease "idLike") "arch" }}
+run pamac-tray
+run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+gnome-keyring-daemon -r -d
+{{- end}}
+
 # email
 run protonmail-bridge --no-window
 
@@ -58,12 +64,6 @@ run nm-applet
 run ckb-next --background
 {{- end }}
 
-{{- if eq (index .chezmoi.osRelease "idLike") "arch" }}
-run pamac-tray
-run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-gnome-keyring-daemon -r -d
-{{- end}}
-
 # Blue light filter
 run redshift
 
@@ -73,6 +73,8 @@ run safeeyes
 run udiskie
 
 run "numlockx on"
+
+run gpg-agent
 
 if [[ "${bar}" = "polybar" ]]; then
     run "${HOME}/.config/polybar/launch.sh"
