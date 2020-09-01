@@ -1,0 +1,8 @@
+{{- $email := promptString "email" -}}
+{{- $name := promptString "name" -}}
+{{- $computer_type := promptString "computer_type" -}}
+
+[data]
+email = "{{ $email }}"
+name = "{{ $name  }}"
+computer_type = "{{ $computer_type }}"
