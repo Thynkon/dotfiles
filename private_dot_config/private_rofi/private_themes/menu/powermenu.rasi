@@ -30,8 +30,8 @@
 /* ########### */
 
 #window {
-  width: 56%;
-  height: 33%;
+  width: 55%;
+  height: 35%;
   anchor: center;
   location: center;
   x-offset: 0%;

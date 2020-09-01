@@ -12,15 +12,15 @@ cpu=$(sh ~/.config/rofi/bin/usedcpu)
 memory=$(sh ~/.config/rofi/bin/usedram)
 
 # Options
-shutdown="襤"
-reboot="ﰇ"
-lock=""
+shutdown=""
+reboot=""
+lock=""
 logout=""
 
 # Variable passed to rofi
 options="$shutdown\n$reboot\n$lock\n$logout"
 
-chosen="$(echo -e "$options" | $rofi_command -p "祥  $uptime    $cpu    $memory " -dmenu -selected-row 2)"
+chosen="$(echo -e "$options" | $rofi_command -p "  $uptime    $cpu    $memory " -dmenu -selected-row 0)"
 case $chosen in
     $shutdown)
         systemctl poweroff
@@ -29,7 +29,7 @@ case $chosen in
         systemctl reboot
         ;;
     $lock)
-        i3lock
+        i3lock-color
         ;;
     $logout)
         loginctl terminate-session $(loginctl session-status | head -n 1 | awk '{print $1}')
