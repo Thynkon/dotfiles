@@ -30,8 +30,13 @@
 /* ########### */
 
 #window {
+{{- if eq .computer_type "laptop" }}
   width: 55%;
   height: 35%;
+{{- else}}
+  width: 50%;
+  height: 30%;
+{{- end}}
   anchor: center;
   location: center;
   x-offset: 0%;
