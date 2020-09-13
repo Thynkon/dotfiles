@@ -8,7 +8,6 @@ let g:coc_global_extensions = [
     \ 'coc-html',
     \ 'coc-java',
     \ 'coc-json',
-    \ 'coc-lua',
     \ 'coc-markdownlint',
     \ 'coc-marketplace',
     \ 'coc-phpls',
@@ -22,7 +21,6 @@ let g:coc_global_extensions = [
     \ 'coc-vimlsp',
     \ 'coc-vimtex',
     \ ]
-" coc-lua dependencies: luarocks, lua-devel
 
 " Latex
 let g:tex_flavor = 'latex'

@@ -9,6 +9,7 @@ if !exists('g:vscode')
   source ~/.config/nvim/plugins/nerdcommenter.vim
   source ~/.config/nvim/theme/theme.vim
   source ~/.config/nvim/plugins/vimtest.vim
+  source ~/.config/nvim/plugins/lua-autocompletion.vim
 
   source ~/.config/nvim/init/autocmd.vim
 endif

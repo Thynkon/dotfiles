@@ -33,6 +33,7 @@ Plug 'tpope/vim-fugitive'
 " Completion framework
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
 
 " Python
 " pep8 indentation
