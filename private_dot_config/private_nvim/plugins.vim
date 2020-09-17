@@ -5,7 +5,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar' " side bar
 Plug 'wesQ3/vim-windowswap'
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'

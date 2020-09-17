@@ -1,15 +1,15 @@
-source ~/.config/nvim/basic.vim
-source ~/.config/nvim/keybindings/standard.vim
+source $XDG_CONFIG_HOME/nvim/basic.vim
+source $XDG_CONFIG_HOME/nvim/keybindings/standard.vim
 
 if !exists('g:vscode')
-  source ~/.config/nvim/plugins.vim
-  source ~/.config/nvim/plugins/closetag.vim
-  source ~/.config/nvim/plugins/coc.vim
-  source ~/.config/nvim/plugins/fzf.vim
-  source ~/.config/nvim/plugins/nerdcommenter.vim
-  source ~/.config/nvim/theme/theme.vim
-  source ~/.config/nvim/plugins/vimtest.vim
-  source ~/.config/nvim/plugins/lua-autocompletion.vim
+  source $XDG_CONFIG_HOME/nvim/plugins.vim
+  source $XDG_CONFIG_HOME/nvim/plugins/closetag.vim
+  source $XDG_CONFIG_HOME/nvim/plugins/coc/coc.vim
+  source $XDG_CONFIG_HOME/nvim/plugins/coc/fzf-preview.vim
+  source $XDG_CONFIG_HOME/nvim/plugins/nerdcommenter.vim
+  source $XDG_CONFIG_HOME/nvim/theme/theme.vim
+  source $XDG_CONFIG_HOME/nvim/plugins/vimtest.vim
+  source $XDG_CONFIG_HOME/nvim/plugins/lua-autocompletion.vim
 
-  source ~/.config/nvim/init/autocmd.vim
+  source $XDG_CONFIG_HOME/nvim/autoload/autocmd.vim
 endif
