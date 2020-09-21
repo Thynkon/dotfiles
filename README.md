@@ -26,6 +26,7 @@ ZSH="$HOME/.config/oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.
 ZSH="$HOME/.config/oh-my-zsh" sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 #### Fonts
+##### Fedora
 ```shell
 sudo dnf install powerline-fonts
 ```
@@ -34,6 +35,15 @@ kfontinst "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20
 kfontinst "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
 kfontinst "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"
 kfontinst "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
+```
+
+##### Archlinux
+```shell
+sudo pacman -S powerline-fonts
+```
+
+```shell
+yay -S ttf-meslo-nerd-font-powerlevel10k
 ```
 
 ### Powerlevel10k
@@ -52,7 +62,9 @@ $ git clone https://github.com/djui/alias-tips.git $ZSH_CUSTOM/plugins/alias-tip
 ```
 
 #### zsh-completions
-    git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
+```sh
+git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
+```
 
 #### zsh-syntax-highlighting
 ```sh
