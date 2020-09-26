@@ -6,6 +6,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+export NVM_LAZY_LOAD=true
+export NVM_LAZY_LOAD_EXTRA_COMMANDS=('nvim')
+export NVM_COMPLETION=true
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -26,6 +30,7 @@ plugins=(
     rustup
     zsh-autosuggestions
     zsh-completions
+    zsh-nvm
     zsh-syntax-highlighting
 )
 
@@ -68,6 +73,11 @@ bindkey 'jk' vi-cmd-mode
 
 export KEYTIMEOUT=20
 
+### Functions
+getspec() {
+  rpm2cpio $1 | cpio -civ '*.spec'
+}
+
 # Powerlevel10k
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -88,7 +98,4 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/shell/key-bindings.zsh
 {{ end}}
 
-### Functions
-getspec() {
-    rpm2cpio $1 | cpio -civ '*.spec'
-}
+[[ -f "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
