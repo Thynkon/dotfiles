@@ -43,7 +43,7 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-Plug 'sainnhe/edge'
+Plug 'joshdick/onedark.vim'
 
 " Initialize plugin system
 call plug#end()
