@@ -1,9 +1,9 @@
 " Coc extensions
 let g:coc_global_extensions = [
     \ 'coc-clangd',
-    \ 'coc-fzf-preview',
     \ 'coc-css',
     \ 'coc-emmet',
+    \ 'coc-fzf-preview',
     \ 'coc-git',
     \ 'coc-highlight',
     \ 'coc-html',
@@ -11,6 +11,7 @@ let g:coc_global_extensions = [
     \ 'coc-json',
     \ 'coc-markdownlint',
     \ 'coc-marketplace',
+    \ 'coc-perl',
     \ 'coc-phpls',
     \ 'coc-prettier',
     \ 'coc-python',
