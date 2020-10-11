@@ -14,8 +14,9 @@
 
 " Automatically opens nerdtree
 "autocmd vimenter * NERDTree
-"autocmd filetype python nnoremap <F4> :w <bar> exec '!python '.shellescape('%')<CR>
-"autocmd filetype c nnoremap <F5> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd filetype tex nnoremap <F5> :w <bar> exec '!pdflatex main.tex '.shellescape('%')<CR>
+
 autocmd filetype c nnoremap <F5> :w <bar> :make <CR>
 autocmd filetype cpp nnoremap <F5> :w <bar> :make <CR>
+
 autocmd filetype rust nnoremap <F5> :w <bar> exec '!cargo run '.shellescape('%')<CR>
