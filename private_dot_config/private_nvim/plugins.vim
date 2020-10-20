@@ -2,13 +2,14 @@ call plug#begin(stdpath('data') . '/plugged')
 " Make sure you use single quotes
 
 " Utility
-Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar' " side bar
 Plug 'wesQ3/vim-windowswap'
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
+" adjust tab size automatically
 Plug 'tpope/vim-sleuth'
 Plug 'easymotion/vim-easymotion'
 Plug 'Yggdroot/indentLine'
