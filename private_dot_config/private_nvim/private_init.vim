@@ -1,5 +1,5 @@
 source $XDG_CONFIG_HOME/nvim/basic.vim
-source $XDG_CONFIG_HOME/nvim/keybindings/standard.vim
+luafile $XDG_CONFIG_HOME/nvim/keybindings/standard.lua
 
 if !exists('g:vscode')
   source $XDG_CONFIG_HOME/nvim/plugins.vim
@@ -16,3 +16,4 @@ if !exists('g:vscode')
 
   source $XDG_CONFIG_HOME/nvim/autoload/autocmd.vim
 endif
+

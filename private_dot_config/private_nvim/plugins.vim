@@ -5,7 +5,6 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar' " side bar
 Plug 'wesQ3/vim-windowswap'
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
@@ -41,6 +40,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'Vimjas/vim-python-pep8-indent'
 
 " Theme / Interface
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
