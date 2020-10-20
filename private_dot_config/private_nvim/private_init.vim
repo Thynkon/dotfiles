@@ -11,6 +11,8 @@ if !exists('g:vscode')
   source $XDG_CONFIG_HOME/nvim/theme/theme.vim
   source $XDG_CONFIG_HOME/nvim/plugins/vimtest.vim
   source $XDG_CONFIG_HOME/nvim/plugins/lua-autocompletion.vim
+  source $XDG_CONFIG_HOME/nvim/plugins/vim-vinegar.vim
+  luafile $XDG_CONFIG_HOME/nvim/plugins/treesitter.lua
 
   source $XDG_CONFIG_HOME/nvim/autoload/autocmd.vim
 endif
