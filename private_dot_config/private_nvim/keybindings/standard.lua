@@ -4,7 +4,7 @@ vim.g.user_emmet_leader_key = ','
 vim.g.timeoutlen = 500
 
 -- Go to normal mode when typing jk
-vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = false, silent = false })
+vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {})
 
 -- Make typing more comfortable
 for mode in string.gmatch('nv','.') do
