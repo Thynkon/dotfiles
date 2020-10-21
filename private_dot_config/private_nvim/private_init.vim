@@ -1,4 +1,4 @@
-source $XDG_CONFIG_HOME/nvim/basic.vim
+luafile $XDG_CONFIG_HOME/nvim/basic.lua
 luafile $XDG_CONFIG_HOME/nvim/keybindings/standard.lua
 
 if !exists('g:vscode')
