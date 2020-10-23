@@ -3,10 +3,10 @@ luafile $XDG_CONFIG_HOME/nvim/keybindings/standard.lua
 
 if !exists('g:vscode')
   source $XDG_CONFIG_HOME/nvim/plugins/plugins.vim
-  source $XDG_CONFIG_HOME/nvim/plugins/closetag.vim
+  luafile $XDG_CONFIG_HOME/nvim/plugins/closetag.lua
   source $XDG_CONFIG_HOME/nvim/plugins/coc/coc.vim
   source $XDG_CONFIG_HOME/nvim/plugins/coc/fzf-preview.vim
-  source $XDG_CONFIG_HOME/nvim/plugins/nerdcommenter.vim
+  luafile $XDG_CONFIG_HOME/nvim/plugins/nerdcommenter.lua
   luafile $XDG_CONFIG_HOME/nvim/plugins/easymotion.lua
   source $XDG_CONFIG_HOME/nvim/theme/theme.vim
   source $XDG_CONFIG_HOME/nvim/plugins/vimtest.vim
