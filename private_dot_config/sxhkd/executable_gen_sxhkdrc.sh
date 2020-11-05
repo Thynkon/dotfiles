@@ -8,6 +8,8 @@ screenshotutility="flameshot gui"
 volume_step="5"
 brightness_step="10"
 
+monitors=($(bspc query -M --names | tr ' ' '\n' | sort --reverse))
+
 cat > "${HOME}/.config/sxhkd/sxhkdrc" << EOF
 ## launch
 # terminal emulator
@@ -91,8 +93,10 @@ alt + ctrl + {m,x,y,z}
 alt + {_,shift + }{j,k,l,eacute}
 	bspc node -{f,s} {west,south,north,east}
 # focus the monitor in the given direction
-alt + {_,control + }{j,eacute}
-	bspc node -{f,s} {west,east}
+alt + control + j
+	bspc monitor ${monitors[0]} -s ${monitors[1]}
+alt + control + eacute
+	bspc monitor ${monitors[1]} -s ${monitors[0]}
 # focus the node for the given path jump
 alt + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
@@ -124,8 +128,8 @@ alt + {_,shift + }{1-9,0}
 #
 
 # preselect the direction
-alt + ctrl + {j,k,l,eacute}
-	bspc node -p {west,south,north,east}
+# alt + ctrl + {j,k,l,eacute}
+	# bspc node -p {west,south,north,east}
 
 # preselect the ratio
 alt + ctrl + {1-9}
