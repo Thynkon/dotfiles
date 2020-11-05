@@ -5,13 +5,13 @@ sxhkd -m 1&
 
 # setup monitors
 monitors=($(bspc query -M --names | tr ' ' '\n' | sort --reverse))
-max_desktops=6
+max_desktops=7
 
 if [ "${#monitors[@]}" -eq 1 ]; then
-    bspc monitor "${monitors[0]}" -d $(seq -s ' ' 0 1 ${max_desktops})
+    bspc monitor "${monitors[0]}" -d $(seq -s ' ' 1 1 ${max_desktops})
 else
-    bspc monitor "${monitors[0]}" -d $(seq -s ' ' 0 1 ${max_desktops})
-    bspc monitor "${monitors[1]}" -d $(seq -s ' ' 0 1 ${max_desktops}) 0
+    bspc monitor "${monitors[0]}" -d $(seq -s ' ' 1 1 ${max_desktops})
+    bspc monitor "${monitors[1]}" -d $(seq -s ' ' 1 1 ${max_desktops})
 fi
 
 bspc config border_width         2

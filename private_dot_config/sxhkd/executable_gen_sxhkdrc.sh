@@ -120,8 +120,8 @@ alt + {grave,Tab}
 	# bspc wm -h on
 
 # focus or send to the given desktop
-alt + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+alt + {_,shift + }{1-9}
+	bspc {desktop -f,node -d} '^{1-9}'
 
 #
 # preselect
