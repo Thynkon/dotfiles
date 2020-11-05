@@ -12,7 +12,6 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 # Reference: https://github.com/polybar/polybar/issues/763#issuecomment-331604987
 if type "xrandr"; then
 	for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-		echo "m is ===$m==="
 		MONITOR=$m polybar -c ~/.config/polybar/config.ini top & polybar -c ~/.config/polybar/config.ini bottom
 	done
 else
