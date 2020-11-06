@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+SXHKD_CONFIG_PATH="${HOME}/.config/sxhkd"
+
 terminal="alacritty"
 browser="firefox-developer-edition"
 gui_editor="vscodium"
@@ -54,6 +56,9 @@ alt + Escape
 # bspwm hotkeys
 #
 
+# list keybinds
+mod4 + s
+	${SXHKD_CONFIG_PATH}/list_keybinds.sh
 # quit/restart bspwm
 alt + shift + {q,r}
 	bspc {quit,wm -r}
