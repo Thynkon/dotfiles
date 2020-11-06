@@ -30,5 +30,5 @@ bspc rule -a 'Vmware' desktop='^6'
 
 $HOME/.config/bspwm/autostart.sh
 # wait for the network interface to be up
-sleep 3
+sleep 1
 $HOME/.config/polybar/launch.sh
