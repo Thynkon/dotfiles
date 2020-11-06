@@ -3,14 +3,17 @@
 pkill sxhkd > /dev/null
 sxhkd -m 1&
 
+# alow to move floating windows with mouse
+bspc config pointer_modifier mod1
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_corner
+
 # setup monitors
 monitors=($(bspc query -M --names | tr ' ' '\n' | sort --reverse))
 max_desktops=7
 
-if [ "${#monitors[@]}" -eq 1 ]; then
-    bspc monitor "${monitors[0]}" -d $(seq -s ' ' 1 1 ${max_desktops})
-else
-    bspc monitor "${monitors[0]}" -d $(seq -s ' ' 1 1 ${max_desktops})
+bspc monitor "${monitors[0]}" -d $(seq -s ' ' 1 1 ${max_desktops})
+if [ "${#monitors[@]}" -eq 2 ]; then
     bspc monitor "${monitors[1]}" -d $(seq -s ' ' 1 1 ${max_desktops})
 fi
 
@@ -21,11 +24,11 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+bspc rule -a firefoxdeveloperedition state=floating desktop='^2'
+bspc rule -a 'VirtualBox Manager' desktop='^6'
+bspc rule -a 'Vmware' desktop='^6'
 
-$HOME/.config/polybar/launch.sh
 $HOME/.config/bspwm/autostart.sh
+# wait for the network interface to be up
+sleep 3
+$HOME/.config/polybar/launch.sh

@@ -92,11 +92,19 @@ alt + ctrl + {m,x,y,z}
 # focus the node in the given direction
 alt + {_,shift + }{j,k,l,eacute}
 	bspc node -{f,s} {west,south,north,east}
+EOF
+
+if [ "${#monitors[@]}" -eq 2 ]; then
+cat >> "${HOME}/.config/sxhkd/sxhkdrc" << EOF
 # focus the monitor in the given direction
 alt + control + j
 	bspc monitor ${monitors[0]} -s ${monitors[1]}
 alt + control + eacute
 	bspc monitor ${monitors[1]} -s ${monitors[0]}
+EOF
+fi
+
+cat >> "${HOME}/.config/sxhkd/sxhkdrc" << EOF
 # focus the node for the given path jump
 alt + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
