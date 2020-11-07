@@ -315,6 +315,9 @@ use-damage = true
 # with GLX backend for some users.
 #
 # xrender-sync-fence = false
+{{- if eq .computer_type "desktop" }}
+xrender-sync-fence = true
+{{- end }}
 
 # GLX backend: Use specified GLSL fragment shader for rendering window contents. 
 # See `compton-default-fshader-win.glsl` and `compton-fake-transparency-fshader-win.glsl` 

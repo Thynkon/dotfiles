@@ -7,7 +7,7 @@ run() {
 }
 
 # Daemonize compton
-run compton -c --backend glx --vsync opengl-swc --blur-background
+run picom --config "${HOME}/.config/picom/picom.conf"
 
 run bitcoin -min
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
