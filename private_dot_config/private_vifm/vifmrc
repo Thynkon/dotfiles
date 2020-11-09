@@ -409,6 +409,10 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 " ------------------------------------------------------------------------------
 
 " Sample mappings
+nnoremap é l
+nnoremap l k
+nnoremap k j
+nnoremap j h
 
 " Start shell in current directory
 nnoremap s :shell<cr>
@@ -454,7 +458,7 @@ nnoremap cc cw<c-u>
 nnoremap A cw
 
 " Open console in current directory
-nnoremap ,t :!xterm &<cr>
+nnoremap ,t :!alacritty &<cr>
 
 " Open editor to edit vifmrc and apply settings after returning to vifm
 nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
