@@ -18,6 +18,11 @@ EDITOR=nvim
 export VISUAL
 export EDITOR
 
+### Packaging
+CHROOT="$HOME/packaging/chroot"
+[ ! -d "${CHROOT}" ] || mkdir -p "${CHROOT}"
+export CHROOT
+
 ### Clean home directory
 ## Android
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
@@ -31,6 +36,9 @@ export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
 
 ## CUDA (NVIDIA's parallel computing architecture and framework)
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+
+## GO
+export GOPATH="$XDG_DATA_HOME"/go
 
 ## GnuPG
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
