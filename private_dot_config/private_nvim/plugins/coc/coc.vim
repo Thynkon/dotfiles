@@ -15,7 +15,6 @@ let g:coc_global_extensions = [
     \ 'coc-phpls',
     \ 'coc-prettier',
     \ 'coc-python',
-    \ 'coc-rust-analyzer',
     \ 'coc-sh',
     \ 'coc-snippets',
     \ 'coc-solargraph',

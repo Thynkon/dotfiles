@@ -1,0 +1,63 @@
+-- Only required if you have packer in your `opt` pack
+vim.cmd [[packadd packer.nvim]]
+local packer = require('packer')
+
+packer.startup(function()
+  -- Packer can manage itself as an optional plugin
+  use {'wbthomason/packer.nvim', opt = true}
+	-- Make sure you use single quotes
+	-- Utility
+	use {'tpope/vim-vinegar'}
+	use {'liuchengxu/vista.vim'}
+	use {'wesQ3/vim-windowswap'}
+	use {'tpope/vim-dispatch'}
+	use {'tpope/vim-surround'}
+	use {'preservim/nerdcommenter'}
+	-- adjust tab size automatically
+	use {'tpope/vim-sleuth'}
+	use {'easymotion/vim-easymotion'}
+	use {'Yggdroot/indentLine'}
+	use {'liuchengxu/vim-which-key'}
+
+	-- Generic Programming Support 
+	use {'honza/vim-snippets'}
+	-- Vim plugin, insert or delete brackets, parens, quotes in pair
+	use {'jiangmiao/auto-pairs'}
+	use {'janko-m/vim-test'}
+	use {'alvan/vim-closetag'}
+
+	-- Markdown / Writting
+	use {'tpope/vim-markdown'}
+	use {'dpelle/vim-LanguageTool'}
+	use {'lervag/vimtex'}
+
+	-- Git Support
+	use {'tpope/vim-fugitive'}
+	use {'airblade/vim-gitgutter'}
+
+	-- Collection of common configurations for the Nvim LSP client
+	use {'neovim/nvim-lspconfig'}
+	-- Extentions to built-in LSP, for example, providing type inlay hints
+	use {'tjdevries/lsp_extensions.nvim'}
+	-- Autocompletion framework for built-in LSP
+	use {'nvim-lua/completion-nvim'}
+
+	-- Filemanager
+	use {'vifm/vifm.vim'}
+
+	-- Python
+	-- pep8 indentation
+	use {'Vimjas/vim-python-pep8-indent'}
+
+	-- Theme / Interface
+	use {'norcalli/nvim-colorizer.lua'}
+	--Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  -- We recommend updating the parsers on update
+	use {'nvim-treesitter/nvim-treesitter'}
+	use {'vim-airline/vim-airline'}
+	use {'vim-airline/vim-airline-themes'}
+	use {'ryanoasis/vim-devicons'}
+	use {'joshdick/onedark.vim'}
+end)
+
+-- packer.update()
+return packer

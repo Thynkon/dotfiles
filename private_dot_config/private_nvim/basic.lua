@@ -43,6 +43,11 @@ vim.o.shortmess = vim.o.shortmess .. 'c'
 -- always show signcolumns
 vim.wo.signcolumn = 'yes'
 
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noinsert,noselect'
+
+vim.api.nvim_command('filetype plugin indent on')
+
 -- Disable arrow movement, resize splits instead.
 vim.api.nvim_set_keymap('n', '<Up>', ':resize -2<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<Down>', ':resize +2<CR>', {noremap = true})
