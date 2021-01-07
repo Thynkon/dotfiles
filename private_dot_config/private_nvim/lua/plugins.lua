@@ -23,7 +23,6 @@ packer.startup(function()
 	use {'honza/vim-snippets'}
 	-- Vim plugin, insert or delete brackets, parens, quotes in pair
 	use {'jiangmiao/auto-pairs'}
-	use {'janko-m/vim-test'}
 	use {'alvan/vim-closetag'}
 
 	-- Markdown / Writting
