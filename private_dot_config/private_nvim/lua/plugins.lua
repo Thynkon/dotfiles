@@ -43,6 +43,11 @@ packer.startup(function()
 
 	-- Filemanager
 	use {'vifm/vifm.vim'}
+	-- Search through files
+	use {
+	  'nvim-telescope/telescope.nvim',
+	  requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+	}
 
 	-- Python
 	-- pep8 indentation

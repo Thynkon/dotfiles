@@ -5,6 +5,7 @@ require('keymap.standard')
 
 if vim.api.nvim_eval('!exists("g:vscode")') then
   require('keymap.lspconfig')
+  require('keymap.telescope')
   require('plugins')
 
   vim.api.nvim_command(string.format('source %s/nvim/theme/theme.vim', config_dir))
@@ -23,10 +24,11 @@ if vim.api.nvim_eval('!exists("g:vscode")') then
   require('lsp.sql')
 
   require('plugin.closetag')
-  require('plugin.nerdcommenter')
   require('plugin.easymotion')
-  require('plugin.vim-vinegar')
+  require('plugin.nerdcommenter')
+  require('plugin.telescope')
   require('plugin.treesitter')
+  require('plugin.vim-vinegar')
 
   vim.api.nvim_command(string.format('source %s/nvim/autoload/autocmd.vim', config_dir))
 end
