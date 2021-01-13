@@ -8,7 +8,7 @@ if vim.api.nvim_eval('!exists("g:vscode")') then
   require('keymap.telescope')
   require('plugins')
 
-  vim.api.nvim_command(string.format('source %s/nvim/theme/theme.vim', config_dir))
+  require('theme/theme')
 
   require('lsp.latex')
   require('lsp.css')
