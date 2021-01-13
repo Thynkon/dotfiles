@@ -19,7 +19,7 @@ packer.startup(function()
 	use {'Yggdroot/indentLine'}
 	use {'liuchengxu/vim-which-key'}
 
-	-- Generic Programming Support 
+	-- Generic Programming Support
 	use {'honza/vim-snippets'}
 	-- Vim plugin, insert or delete brackets, parens, quotes in pair
 	use {'jiangmiao/auto-pairs'}
@@ -56,12 +56,19 @@ packer.startup(function()
 	-- Theme / Interface
 	use {'norcalli/nvim-colorizer.lua'}
 	--Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  -- We recommend updating the parsers on update
-	use {'nvim-treesitter/nvim-treesitter'}
-	use {'vim-airline/vim-airline'}
-	use {'vim-airline/vim-airline-themes'}
+	use {
+	  'nvim-treesitter/nvim-treesitter',
+	  run = function()
+	    vim.api.nvim_command('TSUpdate')
+	  end
+
+	}
+	use {
+	  'hoob3rt/lualine.nvim',
+	  requires = {'kyazdani42/nvim-web-devicons', opt = true}
+	}
 	use {'ryanoasis/vim-devicons'}
 	use {'joshdick/onedark.vim'}
 end)
 
--- packer.update()
 return packer
