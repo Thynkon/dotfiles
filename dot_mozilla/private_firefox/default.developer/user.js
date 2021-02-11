@@ -818,16 +818,16 @@ user_pref("places.history.enabled",				false);
 
 // PREF: Disable disk cache
 // http://kb.mozillazine.org/Browser.cache.disk.enable
-user_pref("browser.cache.disk.enable",				false);
+user_pref("browser.cache.disk.enable",				true);
 
 // PREF: Disable memory cache (disabled)
 // http://kb.mozillazine.org/Browser.cache.memory.enable
-//user_pref("browser.cache.memory.enable",		false);
+user_pref("browser.cache.memory.enable",		true);
 
 // PREF: Disable Caching of SSL Pages
 // CIS Version 1.2.0 October 21st, 2011 2.5.8
 // http://kb.mozillazine.org/Browser.cache.disk_cache_ssl
-user_pref("browser.cache.disk_cache_ssl",			false);
+user_pref("browser.cache.disk_cache_ssl",			true);
 
 // PREF: Disable download history
 // CIS Version 1.2.0 October 21st, 2011 2.5.5
