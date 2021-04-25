@@ -99,6 +99,7 @@ if [[ ! -f "${ZPLUG_REPOS}" ]]; then
     mkdir -p "${ZPLUG_REPOS}"
 fi
 export ZPLUG_REPOS
+export STARSHIP_CONFIG=~/.config/starship/config.toml
 
 ### PATH
 # Android studio

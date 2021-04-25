@@ -1,0 +1,59 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Which is equivalent to
+format = """
+$username\
+$hostname\
+$shlvl\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$cmake\
+$deno\
+$golang\
+$java\
+$kotlin\
+$nodejs\
+$perl\
+$php\
+$python\
+$ruby\
+$rust\
+$vagrant\
+$memory_usage\
+$env_var\
+$custom\
+$cmd_duration\
+$line_break\
+$lua\
+$jobs\
+$time\
+$status\
+$shell\
+$character"""
+
+[directory]
+truncate_to_repo = false
+
+[git_status]
+conflicted = "="
+ahead = "⇡${count}"
+behind = "${count}⇣"
+diverged = "${count}⇕"
+untracked = "${count}?"
+stashed = "${count}$"
+modified = "${count}!"
+staged = "${count}+"
+renamed = "${count}»"
+deleted = "${count}✘"
+
+[rust]
+format = "via [$symbol ($version )]($style)"
+symbol = ""
