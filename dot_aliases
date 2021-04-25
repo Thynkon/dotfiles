@@ -1,0 +1,16 @@
+### Aliases
+alias as='android-studio'
+alias ave='source ./venv/bin/activate'
+alias cm='chezmoi'
+alias ls='lsd'
+alias mvn='mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml'
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+
+# {{ if eq (index .chezmoi.osRelease "id") "arch" }}
+alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+# {{- end}}

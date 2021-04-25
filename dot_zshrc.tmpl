@@ -1,43 +1,50 @@
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.config/oh-my-zsh"
+# Source Prezto.
+if [[ -s "${XDG_DATA_HOME}/zprezto/init.zsh" ]]; then
+  source "${XDG_DATA_HOME}/zprezto/init.zsh"
+fi
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# load aliases
+if [[ -f "${HOME}/.aliases" ]]; then
+  source "${HOME}/.aliases"
+fi
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+### Zsh plugin manager
+source ${XDG_DATA_HOME}/zplug/init.zsh
+zplug "plugins/adb",   from:oh-my-zsh
+zplug "plugins/cargo",   from:oh-my-zsh
+zplug "plugins/colored-man-pages",   from:oh-my-zsh
+zplug "plugins/docker-compose",   from:oh-my-zsh
+zplug "plugins/fd",   from:oh-my-zsh
+zplug "plugins/fzf",   from:oh-my-zsh
+zplug "plugins/laravel",   from:oh-my-zsh
+zplug "plugins/mvn",   from:oh-my-zsh
+zplug "plugins/rust",   from:oh-my-zsh
+zplug "plugins/rustup",   from:oh-my-zsh
+zplug "djui/alias-tips"
 
-export NVM_LAZY_LOAD=true
-export NVM_LAZY_LOAD_EXTRA_COMMANDS=('nvim' 'chezmoi')
-export NVM_COMPLETION=true
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(
-    adb
-    alias-tips
-    cargo
-    colored-man-pages
-    command-not-found
-    docker
-    docker-compose
-    fd
-    fzf
-    git
-    laravel
-    mvn
-    rust
-    rustup
-    zsh-autosuggestions
-    zsh-completions
-    zsh-syntax-highlighting
-)
+# Then, source plugins and add commands to $PATH
+zplug load
 
-source $ZSH/oh-my-zsh.sh
+### VIM mode
+bindkey -v
 
-# User configuration
-export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
+# Map "jk" to "esc"
+bindkey 'jk' vi-cmd-mode
 
+# If KEYTIMEOUT is lesser than 20ms the
+# keybing above wont work
+export KEYTIMEOUT=20
+
+# enable zsh's completion menu
+zmodload zsh/complist
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'j' vi-backward-char
 bindkey -M menuselect 'l' vi-up-line-or-history
@@ -45,32 +52,8 @@ bindkey -M menuselect 'é' vi-forward-char
 bindkey -M menuselect 'k' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
-### Aliases
-alias as='android-studio'
-alias ave='source ./venv/bin/activate'
-alias cm='chezmoi'
-alias ls='lsd'
-alias mvn='mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml'
-alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
-
-{{ if eq (index .chezmoi.osRelease "id") "arch" }}
-alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
-{{- end}}
-
-# VIM mode
-bindkey -v
-
-# Map "jk" to "esc"
-bindkey 'jk' vi-cmd-mode
-# If KEYTIMEOUT is lesser than 20ms the
-# keybing above wont work
-
-export KEYTIMEOUT=20
+# User configuration
+export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
 
 ### Functions
 getspec() {
@@ -79,14 +62,12 @@ getspec() {
 
 # Powerlevel10k
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f "$XDG_CONFIG_HOME"/p10k.zsh ]] && source "$XDG_CONFIG_HOME"/p10k.zsh
+[[ -f "${XDG_CONFIG_HOME}"/p10k.zsh ]] && source "${XDG_CONFIG_HOME}"/p10k.zsh
 
 [ -f "${XDG_CONFIG_HOME}/fzf/fzf.zsh" ] && source "${XDG_CONFIG_HOME}/fzf/fzf.zsh"
 

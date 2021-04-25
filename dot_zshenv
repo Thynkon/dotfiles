@@ -1,3 +1,8 @@
+# Ensure that a non-login, non-interactive shell has a defined environment.
+if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi
+
 # cleanup home directory
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_CONFIG_HOME=$HOME/.config
@@ -86,6 +91,9 @@ HISTFILE_DIR=$(dirname "${HISTFILE}")
 if [[ ! -f "${HISTFILE_DIR}" ]]; then
     mkdir -p "${HISTFILE_DIR}"
 fi
+export ZPLUG_HOME=${XDG_DATA_HOME}/zplug
+# make it easy to load modules using prezto
+export ZPLUG_REPOS=${XDG_DATA_HOME}/zprezto/contrib
 
 ### PATH
 # Android studio
@@ -94,6 +102,9 @@ PATH=$PATH:/opt/gradle/bin:$PATH
 
 # Composer
 PATH=$HOME/.config/composer/vendor/bin:$PATH
+
+# Go
+PATH=$XDG_DATA_HOME/go/bin/:$PATH
 
 # Mess-cleaner
 PATH=$HOME/programming/mess-cleaner:$PATH
