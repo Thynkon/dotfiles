@@ -91,9 +91,14 @@ HISTFILE_DIR=$(dirname "${HISTFILE}")
 if [[ ! -f "${HISTFILE_DIR}" ]]; then
     mkdir -p "${HISTFILE_DIR}"
 fi
+
 export ZPLUG_HOME=${XDG_DATA_HOME}/zplug
 # make it easy to load modules using prezto
-export ZPLUG_REPOS=${XDG_DATA_HOME}/zprezto/contrib
+ZPLUG_REPOS=${XDG_DATA_HOME}/zprezto/contrib
+if [[ ! -f "${ZPLUG_REPOS}" ]]; then
+    mkdir -p "${ZPLUG_REPOS}"
+fi
+export ZPLUG_REPOS
 
 ### PATH
 # Android studio
