@@ -2,17 +2,12 @@ local lspconfig = require 'lspconfig'
 
 -- function to attach completion when setting up lsp
 local on_attach = function(client)
-    require'completion'.on_attach(client)
+  require'completion'.on_attach(client)
 end
 
-lspconfig.bashls.setup {
-  cmd = { "bash-language-server", "start" },
-  cmd_env = {
-    GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)"
-  },
-  filetypes = { "sh", "bash" },
-  settings = {
-  },
+lspconfig.clangd.setup {
+  cmd = { "/usr/bin/clangd", "--background-index" },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
   on_attach = on_attach
 }
 
