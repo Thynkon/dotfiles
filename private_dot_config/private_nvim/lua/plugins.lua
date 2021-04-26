@@ -69,6 +69,10 @@ packer.startup(function()
 	}
 	use {'ryanoasis/vim-devicons'}
 	use {'joshdick/onedark.vim'}
+	-- launch terminal from neovim
+	use {'akinsho/nvim-toggleterm.lua'}
+
+	use {'kosayoda/nvim-lightbulb'}
 end)
 
 return packer

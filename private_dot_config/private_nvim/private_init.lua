@@ -31,6 +31,8 @@ if vim.api.nvim_eval('!exists("g:vscode")') then
   require('plugin.treesitter')
   require('plugin.vim-vinegar')
   require('plugin.nvim-toggleterm')
+  -- code actions' plugin
+  require('plugin.nvim-lightbulb')
 
   vim.api.nvim_command(string.format('source %s/nvim/autoload/autocmd.vim', config_dir))
 end

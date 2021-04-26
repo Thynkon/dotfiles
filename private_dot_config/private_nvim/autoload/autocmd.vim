@@ -19,6 +19,10 @@ autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
 
+" Enable code action's shortcuts (automatically import missing libraries, fix
+" code, etc...)
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+
 autocmd filetype tex nnoremap <F5> :w <bar> exec '!make'<CR>
 
 autocmd filetype c nnoremap <F5> :w <bar> :make <CR>
