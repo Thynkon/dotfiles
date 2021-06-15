@@ -23,7 +23,7 @@ git clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pac
 
 Open neovim and install all plugins by typing the following:
 ```sh
-:PlugInstall
+:PackerInstall
 ```
 
 ### pynvim
