@@ -20,5 +20,4 @@ vim.g.spacegray_italicize_comments = 1
 -- status line
 local lualine = require('lualine')
 
-lualine.status()
 lualine.theme = "onedark"
