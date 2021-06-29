@@ -12,7 +12,6 @@ run picom --config "${HOME}/.config/picom/picom.conf"
 # Notification daemon
 run dunst
 
-run bitcoin -min
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 gnome-keyring-daemon -r -d
 
@@ -42,6 +41,6 @@ run numlockx on
 run gpg-agent
 
 # set background
-run feh --bg-scale $HOME/.config/polybar/theme/wallpapers/default
+run variety
 
 exit 0
