@@ -1,3 +1,14 @@
+#!/usr/bin/env bash
+
+GITUI_CONFIG_PATH="${HOME}/.config/gitui"
+GITUI_CONFIG_FILE="key_config.ron"
+
+key_left="j"
+key_right="é"
+key_up="l"
+key_down="k"
+
+cat > "${GITUI_CONFIG_PATH}/${GITUI_CONFIG_FILE}" << EOF
 // bit for modifiers
 // bits: 0  None 
 // bits: 1  SHIFT
@@ -19,10 +30,10 @@
     tab_toggle_reverse: ( code: BackTab, modifiers: ( bits: 1,),),
     toggle_workarea: ( code: Char('w'), modifiers: (bits: 0,),),
 
-    focus_right: ( code: Char('é'), modifiers: ( bits: 0,),),
-    focus_left: ( code: Char('j'), modifiers: ( bits: 0,),),
-    focus_above: ( code: Char('l'), modifiers: ( bits: 0,),),
-    focus_below: ( code: Char('k'), modifiers: ( bits: 0,),),
+    focus_right: ( code: Char('${key_right}'), modifiers: ( bits: 0,),),
+    focus_left: ( code: Char('${key_left}'), modifiers: ( bits: 0,),),
+    focus_above: ( code: Char('${key_up}'), modifiers: ( bits: 0,),),
+    focus_below: ( code: Char('${key_down}'), modifiers: ( bits: 0,),),
 
     open_help: ( code: F(1), modifiers: ( bits: 0,),),
 
@@ -37,19 +48,19 @@
     open_commit_editor: ( code: Char('e'), modifiers: ( bits: 2,),),
     undo_commit: ( code: Char('U'), modifiers: ( bits: 1,),),
 
-    move_left: ( code: Char('j'), modifiers: ( bits: 0,),),
-    move_right: ( code: Char('é'), modifiers: ( bits: 0,),),
+    move_left: ( code: Char('${key_left}'), modifiers: ( bits: 0,),),
+    move_right: ( code: Char('${key_right}'), modifiers: ( bits: 0,),),
     home: ( code: Home, modifiers: ( bits: 0,),),
     end: ( code: End, modifiers: ( bits: 0,),),
-    move_up: ( code: Char('l'), modifiers: ( bits: 0,),),
-    move_down: ( code: Char('k'), modifiers: ( bits: 0,),),
+    move_up: ( code: Char('${key_up}'), modifiers: ( bits: 0,),),
+    move_down: ( code: Char('${key_down}'), modifiers: ( bits: 0,),),
     page_up: ( code: Char('b'), modifiers: ( bits: 2,),),
     page_down: ( code: Char('f'), modifiers: ( bits: 2,),),
     tree_collapse_recursive: ( code: Left, modifiers: ( bits: 1,),),
     tree_expand_recursive: ( code: Right, modifiers: ( bits: 1,),),
 
-    shift_up: ( code: Char('L'), modifiers: ( bits: 1,),),
-    shift_down: ( code: Char('K'), modifiers: ( bits: 1,),),
+    shift_up: ( code: Char('${key_up^^}'), modifiers: ( bits: 1,),),
+    shift_down: ( code: Char('${key_down^^}'), modifiers: ( bits: 1,),),
 
     enter: ( code: Enter, modifiers: ( bits: 0,),),
     blame: ( code: Char('B'), modifiers: ( bits: 1,),),
@@ -95,3 +106,4 @@
     //removed in 0.11
     //tab_toggle_reverse_windows: ( code: BackTab, modifiers: ( bits: 1,),),
 )
+EOF
