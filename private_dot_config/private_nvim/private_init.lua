@@ -1,8 +1,9 @@
 local config_dir = os.getenv("XDG_CONFIG_HOME")
+local aliases = require('lib/aliases')
 
 require('basic')
 require('keymap.standard')
-if vim.api.nvim_eval('!exists("g:vscode")') then
+if api.nvim_eval('!exists("g:vscode")') then
   require('keymap.lspconfig')
   require('keymap.telescope')
   require('plugins')
@@ -17,13 +18,14 @@ if vim.api.nvim_eval('!exists("g:vscode")') then
   require('lsp.json')
   require('lsp.latex')
   require('lsp.lua')
-  require('lsp.perl')
+--  require('lsp.perl')
   require('lsp.php')
   require('lsp.python')
   require('lsp.rust')
   require('lsp.shell')
   require('lsp.sql')
 
+  require('plugin.norg')
   require('plugin.closetag')
   require('plugin.easymotion')
   require('plugin.nerdcommenter')
@@ -34,5 +36,5 @@ if vim.api.nvim_eval('!exists("g:vscode")') then
   -- code actions' plugin
   require('plugin.nvim-lightbulb')
 
-  vim.api.nvim_command(string.format('source %s/nvim/autoload/autocmd.vim', config_dir))
+  api.nvim_command(string.format('source %s/nvim/autoload/autocmd.vim', config_dir))
 end

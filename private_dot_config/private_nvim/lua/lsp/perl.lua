@@ -5,10 +5,18 @@ local on_attach = function(client)
     require'completion'.on_attach(client)
 end
 
-lspconfig.pyls.setup {
-  cmd = { "pyls" },
-  filetypes = { "python" },
-  settings = {},
+lspconfig.perlls.setup {
+  cmd = { "perl", "-MPerl::LanguageServer", "-e", "Perl::LanguageServer::run", "--", "--port 13603", "--nostdio 0", "--version 2.1.0" },
+  filetypes = { "perl" },
+  -- root_dir = vim's starting directory
+  settings = {
+    perl = {
+      fileFilter = { ".pm", ".pl" },
+      ignoreDirs = ".git",
+      perlCmd = "perl",
+      perlInc = " "
+    }
+  },
   on_attach = on_attach
 }
 
