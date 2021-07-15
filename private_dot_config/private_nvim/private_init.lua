@@ -1,5 +1,6 @@
+require('lib/aliases')
+
 local config_dir = os.getenv("XDG_CONFIG_HOME")
-local aliases = require('lib/aliases')
 
 require('basic')
 require('keymap.standard')
@@ -10,6 +11,7 @@ if api.nvim_eval('!exists("g:vscode")') then
 
   require('theme/theme')
 
+  -- LSP clients configuration
   require('lsp.c')
   require('lsp.css')
   require('lsp.go')
@@ -18,12 +20,16 @@ if api.nvim_eval('!exists("g:vscode")') then
   require('lsp.json')
   require('lsp.latex')
   require('lsp.lua')
---  require('lsp.perl')
+  require('lsp.perl')
   require('lsp.php')
   require('lsp.python')
   require('lsp.rust')
   require('lsp.shell')
   require('lsp.sql')
+
+  -- snippets
+  require('plugin.completion-nvim')
+  require('plugin.utilsnips')
 
   require('plugin.norg')
   require('plugin.closetag')

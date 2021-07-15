@@ -5,7 +5,7 @@ local on_attach = function(client)
     require'completion'.on_attach(client)
 end
 
-lspconfig.pyls.setup {
+lspconfig.pylsp.setup {
   cmd = { "pyls" },
   filetypes = { "python" },
   settings = {},

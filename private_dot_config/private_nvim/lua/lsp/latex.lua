@@ -1,5 +1,4 @@
 local lspconfig = require 'lspconfig'
-local cargo_home = os.getenv("CARGO_HOME")
 
 -- function to attach completion when setting up lsp
 local on_attach = function(client)
@@ -7,7 +6,7 @@ local on_attach = function(client)
 end
 
 lspconfig.texlab.setup {
-  cmd = { string.format("%s/bin/texlab", cargo_home) },
+  cmd = { string.format("/usr/bin/texlab") },
   filetypes = { "tex", "bib" },
   -- root_dir = vim's starting directory
   settings = {
