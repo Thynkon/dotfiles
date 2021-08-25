@@ -29,6 +29,9 @@ bspc rule -a firefoxdeveloperedition desktop='^2'
 bspc rule -a 'VirtualBox Manager' desktop='^6'
 bspc rule -a 'Vmware' desktop='^6'
 
+# fix java-based display problems
+wmname LG3D
+
 $HOME/.config/bspwm/autostart.sh
 # wait for the network interface to be up
 sleep 1
