@@ -74,6 +74,13 @@ export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
 ## neovim
 export COC_EXTENSIONS_HOME="$XDG_CONFIG_HOME/coc/extensions"
 
+## Perl
+export PERL_HOME="${HOME}/perl5"
+export PERL5LIB="${PERL_HOME}/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+export PERL_LOCAL_LIB_ROOT="${PELR_HOME}${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+export PERL_MB_OPT="--install_base \"${PERL_HOME}\""
+export PERL_MM_OPT="INSTALL_BASE=${PERL_HOME}"
+
 ## Ruby
 export GEM_HOME="$XDG_DATA_HOME"/gem
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
@@ -117,6 +124,7 @@ PATH=$HOME/programming/mess-cleaner:$PATH
 
 # Perl
 PATH=/usr/bin/core_perl:$PATH
+PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"
 
 # NPM
 PATH=$XDG_DATA_HOME/npm/bin/:$PATH
