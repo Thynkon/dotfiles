@@ -30,3 +30,5 @@ autocmd filetype cpp nnoremap <F5> :w <bar> :make <CR>
 
 autocmd filetype rust nnoremap <F5> :w <bar> exec '!cargo run '.shellescape('%')<CR>
 autocmd filetype rust nnoremap <F6> :w <bar> exec '!cargo test'<CR>
+
+autocmd FileType html,css EmmetInstall
