@@ -1,7 +1,7 @@
 local key = require('lib/keybindings')
 
 g.mapleader = ','
-g.user_emmet_leader_key = ','
+g.user_emmet_leader_key = '<C-Z>'
 -- By default timeoutlen is 1000 ms
 g.timeoutlen = 500
 

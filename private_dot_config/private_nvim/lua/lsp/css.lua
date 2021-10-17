@@ -6,7 +6,7 @@ local on_attach = function(client)
 end
 
 lspconfig.cssls.setup {
-  cmd = { "css-languageserver", "--stdio" },
+  cmd = { "vscode-css-languageserver", "--stdio" },
   filetypes = { "css", "scss", "less" },
   root_dir = lspconfig.util.root_pattern("package.json"),
   settings = {

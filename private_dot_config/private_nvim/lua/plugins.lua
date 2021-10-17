@@ -97,6 +97,8 @@ packer.startup(function()
   use {'akinsho/nvim-toggleterm.lua'}
 
   use {'kosayoda/nvim-lightbulb'}
+
+  use {'mattn/emmet-vim'}
 end)
 
 return packer

@@ -6,7 +6,7 @@ local on_attach = function(client)
 end
 
 lspconfig.html.setup {
-  cmd = { "html-languageserver", "--stdio" },
+  cmd = { "vscode-html-languageserver", "--stdio" },
   filetypes = { "html" },
   init_options = {
     configurationSection = { "html", "css", "javascript" },
