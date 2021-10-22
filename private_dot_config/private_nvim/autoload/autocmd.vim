@@ -23,12 +23,4 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 " code, etc...)
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 
-autocmd filetype tex nnoremap <F5> :w <bar> exec '!make'<CR>
-
-autocmd filetype c nnoremap <F5> :w <bar> :make <CR>
-autocmd filetype cpp nnoremap <F5> :w <bar> :make <CR>
-
-autocmd filetype rust nnoremap <F5> :w <bar> exec '!cargo run '.shellescape('%')<CR>
-autocmd filetype rust nnoremap <F6> :w <bar> exec '!cargo test'<CR>
-
 autocmd FileType html,css EmmetInstall

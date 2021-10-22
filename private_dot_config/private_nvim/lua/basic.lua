@@ -49,6 +49,10 @@ wo.signcolumn = 'yes'
 o.completeopt = 'menuone,noinsert,noselect'
 
 api.nvim_command('filetype plugin indent on')
+bo.tabstop = 4
+bo.shiftwidth = 4
+-- go.expandtab = true
+vim.cmd('set expandtab')
 
 -- Disable arrow movement, resize splits instead.
 key.map('n', '<Up>', ':resize -2<CR>', {noremap = true})
