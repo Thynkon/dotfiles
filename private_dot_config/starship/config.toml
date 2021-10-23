@@ -13,6 +13,11 @@ $git_commit\
 $git_state\
 $git_status\
 $hg_branch\
+$shell\
+$line_break\
+$character"""
+
+right_format="""
 $docker_context\
 $package\
 $cmake\
@@ -24,6 +29,7 @@ $nodejs\
 $perl\
 $php\
 $python\
+$nix_shell\
 $ruby\
 $rust\
 $vagrant\
@@ -31,13 +37,23 @@ $memory_usage\
 $env_var\
 $custom\
 $cmd_duration\
-$line_break\
 $lua\
 $jobs\
 $time\
 $status\
-$shell\
-$character"""
+"""
+
+[character]
+success_symbol = "[❯](bold green) "
+error_symbol = "[❯](bold red) "
+vicmd_symbol = "[❮](bold green) "
+
+
+[nix_shell]
+disabled = true
+impure_msg = "[impure shell](bold red)"
+pure_msg = "[pure shell](bold green)"
+format = 'via [☃️ $state( \($name\))](bold blue) '
 
 [directory]
 truncate_to_repo = false
