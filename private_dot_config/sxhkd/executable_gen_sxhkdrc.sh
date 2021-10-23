@@ -175,10 +175,10 @@ alt + {Left,Down,Up,Right}
 ## brightness
 # increase
 XF86MonBrightnessUp
-	xbacklight -inc ${brightness_step}
+	brightnessctl set "+${brightness_step}%"
 # decrease
 XF86MonBrightnessDown
-	xbacklight -dec ${brightness_step}
+	brightnessctl set "${brightness_step}-%"
 
 ## Volume
 # increase
