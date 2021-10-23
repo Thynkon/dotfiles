@@ -18,6 +18,3 @@ g.spacegray_underline_search = 1
 g.spacegray_italicize_comments = 1
 
 -- status line
-local lualine = require('lualine')
-
-lualine.theme = "onedark"

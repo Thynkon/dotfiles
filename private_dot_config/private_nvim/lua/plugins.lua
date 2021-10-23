@@ -15,7 +15,6 @@ packer.startup(function()
         use {'preservim/nerdcommenter'}
         use {'easymotion/vim-easymotion'}
         use {'Yggdroot/indentLine'}
-        use {'liuchengxu/vim-which-key'}
 
         -- Generic Programming Support
         -- snippets
@@ -83,10 +82,16 @@ packer.startup(function()
                 end
 
         }
-        use {
-                'hoob3rt/lualine.nvim',
-                requires = {'kyazdani42/nvim-web-devicons', opt = true}
-        }
+        use({
+                "NTBBloodbath/galaxyline.nvim",
+                -- your statusline
+                config = function()
+                        require("galaxyline.themes.eviline")
+                end,
+                -- some optional icons
+                requires = { "kyazdani42/nvim-web-devicons", opt = true }
+        })
+
         use {'ryanoasis/vim-devicons'}
         use {'joshdick/onedark.vim'}
         -- launch terminal from neovim

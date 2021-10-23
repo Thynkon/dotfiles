@@ -49,6 +49,26 @@ local on_attach = function(client, bufnr)
 
 end
 
+local custom_init = function(client)
+  client.config.flags = client.config.flags or {}
+  client.config.flags.allow_incremental_sync = true
+end
+
+local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
+updated_capabilities = vim.tbl_deep_extend("keep", updated_capabilities, nvim_status.capabilities)
+updated_capabilities.textDocument.codeLens = { dynamicRegistration = false }
+updated_capabilities = require("cmp_nvim_lsp").update_capabilities(updated_capabilities)
+
+-- TODO: check if this is the problem.
+updated_capabilities.textDocument.completion.completionItem.insertReplaceSupport = false
+
+-- vim.lsp.buf_request(0, "textDocument/codeLens", { textDocument = vim.lsp.util.make_text_document_params() })
+
+-- Make runtime files discoverable to the server
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, 'lua/?.lua')
+table.insert(runtime_path, 'lua/?/init.lua')
+
 lsp.servers = {
         cmake = (1 == vim.fn.executable "cmake-language-server"),
         bashls = true,
@@ -116,7 +136,7 @@ local setup_server = function(server, config)
 
         config = vim.tbl_deep_extend("force", {
                 on_init = custom_init,
-                on_attach = custom_attach,
+                on_attach = on_attach,
                 capabilities = updated_capabilities,
                 flags = {
                         debounce_text_changes = 50,

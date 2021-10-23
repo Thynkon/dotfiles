@@ -109,6 +109,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/thynkon/.local/share/nvim/site/pack/packer/start/emmet-vim"
   },
+  ["galaxyline.nvim"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30galaxyline.themes.eviline\frequire\0" },
+    loaded = true,
+    path = "/home/thynkon/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+  },
   indentLine = {
     loaded = true,
     path = "/home/thynkon/.local/share/nvim/site/pack/packer/start/indentLine"
@@ -124,10 +129,6 @@ _G.packer_plugins = {
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/home/thynkon/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
-  },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/home/thynkon/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
   nerdcommenter = {
     loaded = true,
@@ -246,10 +247,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/thynkon/.local/share/nvim/site/pack/packer/start/vim-vsnip"
   },
-  ["vim-which-key"] = {
-    loaded = true,
-    path = "/home/thynkon/.local/share/nvim/site/pack/packer/start/vim-which-key"
-  },
   ["vim-windowswap"] = {
     loaded = true,
     path = "/home/thynkon/.local/share/nvim/site/pack/packer/start/vim-windowswap"
@@ -265,6 +262,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: galaxyline.nvim
+time([[Config for galaxyline.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30galaxyline.themes.eviline\frequire\0", "config", "galaxyline.nvim")
+time([[Config for galaxyline.nvim]], false)
 if should_profile then save_profiles() end
 
 end)

@@ -17,4 +17,3 @@ for mode in string.gmatch('nv','.') do
 end
 
 key.map('n', '<Space>', ':set hlsearch!<CR>', { noremap = true, silent = false })
-key.map('n', '<leader>', ":WhichKey '<Space>'<CR>", { noremap = true, silent = true })
