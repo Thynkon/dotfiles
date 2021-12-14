@@ -41,8 +41,6 @@ theme.useless_gap                   = dpi(4)
 -- icons
 theme.icon_widget_width             = dpi(30)
 theme.font_icons                    = "MesloLGS NF"
-
-{{- if eq .computer_type "laptop" }}
 -- battery
 theme.battery_icon_bg               = "#eC6798"
 theme.battery_icon_font_size        = 20
@@ -52,7 +50,6 @@ theme.battery_low                   = ""
 theme.battery_half                  = ""
 theme.battery_good                  = ""
 theme.battery_full                  = ""
-{{- end }}
 
 -- calendar
 theme.calendar_icon                 = ""
@@ -147,8 +144,6 @@ theme.volume_normal                 = "奔"
 theme.volume_loud                   = "墳"
 
 local separator = wibox.widget.imagebox(theme.separator)
-
-{{- if eq .computer_type "laptop" }}
 -- Battery
 local battery_icon          = wibox.widget.textbox()
 battery_icon.forced_width   = theme.icon_widget_width
@@ -214,7 +209,6 @@ local battery = lain.widget.bat({
 battery.align = "center"
 local battery_bg = wibox.container.background(battery.widget, theme.bg_focus, gears.shape.rectangle)
 local battery_widget = wibox.container.margin(battery_bg, dpi(0), dpi(0), dpi(5), dpi(5))
-{{- end }}
 
 -- Calendar
 local calendar_icon         = wibox.widget.textbox()
@@ -630,11 +624,9 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray({visible = true}),
             separator,
-{{- if eq .computer_type "laptop" }}
             battery_icon_widget,
             battery_widget,
             separator,
-{{- end }}
             volume_icon_widget,
             volume_widget,
             separator,
