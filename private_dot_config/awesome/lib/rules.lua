@@ -29,6 +29,10 @@ local rules = {
   },
   -- Set applications to be maximized at startup.
   {
+    rule = {class = "Firefox Developer Edition"},
+    properties = {maximized = true}
+  },
+  {
     rule = {class = settings.editorgui},
     properties = {maximized = true}
   },
