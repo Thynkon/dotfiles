@@ -16,6 +16,6 @@ if api.nvim_eval('!exists("g:vscode")') then
   -- LSP clients configuration
   require("lsp")
 
-  api.nvim_command(string.format("source %s/nvim/autoload/autocmd.vim", config_dir))
+  require("autoload/autocmd")
 end
 
