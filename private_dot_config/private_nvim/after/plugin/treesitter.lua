@@ -9,14 +9,15 @@ require'nvim-treesitter.configs'.setup {
 		"java",
 		"json",
 		"lua",
+		"markdown",
 		"nix",
---		"perl",  installation fails on nixos
 		"php",
 		"python",
 		"ruby",
 		"rust",
 		"scss",
 		"toml",
+--		"perl",  installation fails on nixos
 	},
 	highlight = {
 		enable = true, -- false will disable the whole extension

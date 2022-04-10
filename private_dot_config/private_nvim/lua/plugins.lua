@@ -1,105 +1,116 @@
 -- Only required if you have packer in your `opt` pack
 vim.cmd [[packadd packer.nvim]]
-local packer = require('packer')
+local packer = require("packer")
 
-packer.startup(function()
-        -- Packer can manage itself as an optional plugin
-        use {'wbthomason/packer.nvim', opt = true}
-        -- Make sure you use single quotes
-        -- Utility
-        use {'tpope/vim-vinegar'}
-        use {'liuchengxu/vista.vim'}
-        use {'wesQ3/vim-windowswap'}
-        use {'tpope/vim-dispatch'}
-        use {'tpope/vim-surround'}
-        use {'preservim/nerdcommenter'}
-        use {'easymotion/vim-easymotion'}
-        use {'Yggdroot/indentLine'}
+packer.startup(
+  function()
+    -- Packer can manage itself as an optional plugin
+    use {"wbthomason/packer.nvim", opt = true}
+    -- Make sure you use single quotes
+    -- Utility
+    use {"tpope/vim-vinegar"}
+    use {"liuchengxu/vista.vim"}
+    use {"wesQ3/vim-windowswap"}
+    use {"tpope/vim-dispatch"}
+    use {"tpope/vim-surround"}
+    use {"preservim/nerdcommenter"}
+    use {"easymotion/vim-easymotion"}
+    use {"Yggdroot/indentLine"}
+    use {"mhartington/formatter.nvim"}
 
-        -- Generic Programming Support
-        -- snippets
-        use {
-                'honza/vim-snippets',
-                requires = 'SirVer/ultisnips',
-        }
-        -- Vim plugin, insert or delete brackets, parens, quotes in pair
-        use {'jiangmiao/auto-pairs'}
-        use {'alvan/vim-closetag'}
+    -- Generic Programming Support
+    -- Vim plugin, insert or delete brackets, parens, quotes in pair
+    use {"jiangmiao/auto-pairs"}
+    use {"alvan/vim-closetag"}
+    use {"tpope/vim-endwise"}
 
-        -- Markdown / Writting
-        use {'tpope/vim-markdown'}
-        use {'dpelle/vim-LanguageTool'}
-        use {'lervag/vimtex'}
+    -- Markdown / Writting
+    use {"nvim-orgmode/orgmode"}
+    use {"tpope/vim-markdown"}
+    use {"dpelle/vim-LanguageTool"}
+    use {"lervag/vimtex"}
 
-        -- Git Support
-        use {'tpope/vim-fugitive'}
-        use {'airblade/vim-gitgutter'}
+    -- Git Support
+    use {"tpope/vim-fugitive"}
+    use {"airblade/vim-gitgutter"}
+    use {"TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim"}
+    -- gitlens for nvim
+    use {"APZelos/blamer.nvim"}
 
-        -- Collection of common configurations for the Nvim LSP client
-        use {'L3MON4D3/LuaSnip'}
-        use {'neovim/nvim-lspconfig'}
-        use {"wbthomason/lsp-status.nvim"}
+    -- Collection of common configurations for the Nvim LSP client
+    use {"L3MON4D3/LuaSnip"}
+    -- vscode like snippets
+    use {"rafamadriz/friendly-snippets"}
+    use {"neovim/nvim-lspconfig"}
+    use {"wbthomason/lsp-status.nvim"}
 
-        -- Install Lsp servers
-        use {'williamboman/nvim-lsp-installer'}
+    -- Install Lsp servers
+    use {"williamboman/nvim-lsp-installer"}
 
-        -- Lsp config
-        use {'hrsh7th/nvim-cmp'}
-        use {'hrsh7th/cmp-buffer'}
-        use {'hrsh7th/cmp-path'}
-        use {'hrsh7th/cmp-nvim-lua'}
-        use {'hrsh7th/cmp-nvim-lsp'}
-        use {'saadparwaiz1/cmp_luasnip'}
-        use {"onsails/lspkind-nvim"}
-        use {"tjdevries/colorbuddy.nvim"}
+    -- Lsp config
+    use {"hrsh7th/nvim-cmp"}
+    use {"hrsh7th/cmp-buffer"}
+    use {"hrsh7th/cmp-path"}
+    use {"hrsh7th/cmp-calc"}
+    use {"hrsh7th/cmp-nvim-lsp-document-symbol"}
+    use {"hrsh7th/cmp-nvim-lua"}
+    use {"hrsh7th/cmp-nvim-lsp"}
+    use {"lukas-reineke/cmp-rg"}
+    use {"saadparwaiz1/cmp_luasnip"}
+    use {"onsails/lspkind-nvim"}
+    use {"tjdevries/colorbuddy.nvim"}
 
-        -- For vsnip user.
-        use {'hrsh7th/cmp-vsnip'}
-        use {'hrsh7th/vim-vsnip'}
+    -- For vsnip user.
+    use {"hrsh7th/cmp-vsnip"}
+    use {"hrsh7th/vim-vsnip"}
 
-        -- Extentions to built-in LSP, for example, providing type inlay hints
-        use {'tjdevries/lsp_extensions.nvim'}
+    -- Extentions to built-in LSP, for example, providing type inlay hints
+    use {"tjdevries/lsp_extensions.nvim"}
 
-        -- Filemanager
-        use {'vifm/vifm.vim'}
-        -- Search through files
-        use {
-                'nvim-telescope/telescope.nvim',
-                requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-        }
+    -- Filemanager
+    use {"vifm/vifm.vim"}
+    -- Search through files
+    use {
+      "nvim-telescope/telescope.nvim",
+      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+    }
 
-        -- Python
-        -- pep8 indentation
-        use {'Vimjas/vim-python-pep8-indent'}
+    -- Remote editing
+    use {'chipsenkbeil/distant.nvim'}
 
-        -- Theme / Interface
-        use {'norcalli/nvim-colorizer.lua'}
-        --Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  -- We recommend updating the parsers on update
-        use {
-                'nvim-treesitter/nvim-treesitter',
-                run = function()
-                        vim.api.nvim_command('TSUpdate')
-                end
+    -- Python
+    -- pep8 indentation
+    use {"Vimjas/vim-python-pep8-indent"}
 
-        }
-        use({
-                "NTBBloodbath/galaxyline.nvim",
-                -- your statusline
-                config = function()
-                        require("galaxyline.themes.eviline")
-                end,
-                -- some optional icons
-                requires = { "kyazdani42/nvim-web-devicons", opt = true }
-        })
+    -- rust
+    use {"rust-lang/rust.vim"}
 
-        use {'ryanoasis/vim-devicons'}
-        use {'joshdick/onedark.vim'}
-        -- launch terminal from neovim
-        use {'akinsho/nvim-toggleterm.lua'}
+    -- Theme / Interface
+    use {"norcalli/nvim-colorizer.lua"}
+    --Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  -- We recommend updating the parsers on update
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = function()
+        vim.api.nvim_command("TSUpdate")
+      end
+    }
+    use {"Th3Whit3Wolf/one-nvim"}
+    use {"kyazdani42/nvim-web-devicons"}
+    use(
+      {
+        "famiu/feline.nvim",
+        tag = "v0.3.3",
+        requires = {"SmiteshP/nvim-gps", opt = true}
+      }
+    )
 
-        use {'kosayoda/nvim-lightbulb'}
+    use {"ryanoasis/vim-devicons"}
+    use {"joshdick/onedark.vim"}
+    -- launch terminal from neovim
+    use {"kosayoda/nvim-lightbulb"}
 
-        use {'mattn/emmet-vim'}
-end)
+    use {"mattn/emmet-vim"}
+  end
+)
 
 return packer

@@ -5,7 +5,7 @@ if fn.has('termguicolors') == 1 then
   api.nvim_command("set termguicolors")
 end
 
-cmd("colorscheme onedark")
+cmd("colorscheme one-nvim")
 
 --  Show colors in current buffer
 require 'colorizer'.setup ({

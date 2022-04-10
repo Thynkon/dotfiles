@@ -13,11 +13,11 @@
 "autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Show diagnostic popup on cursor hover
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+autocmd CursorHold * lua vim.diagnostic.open_float()
 
 " Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-        \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
+" autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+"         \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
 
 " Enable code action's shortcuts (automatically import missing libraries, fix
 " code, etc...)

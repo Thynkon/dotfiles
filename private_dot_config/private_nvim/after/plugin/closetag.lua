@@ -23,7 +23,7 @@ g.closetag_emptyTags_caseSensitive = 1
 g.closetag_regions = {
   ['typescript.tsx'] = 'jsxRegion,tsxRegion',
   ['javascript.jsx'] = 'jsxRegion',
-}                                                                                                                                                                                  
+}
 
 -- Shortcut for closing tags, default is '>'
 g.closetag_shortcut = '>'

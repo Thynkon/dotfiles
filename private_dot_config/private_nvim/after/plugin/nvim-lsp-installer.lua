@@ -15,7 +15,7 @@ local servers = {
         'jsonls',
         'phpactor',
         'rnix',
-        'rust_analyzer',
+--        'rust_analyzer',
         'sqlls',
         'sumneko_lua',
         'texlab',

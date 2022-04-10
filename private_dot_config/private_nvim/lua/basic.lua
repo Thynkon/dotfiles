@@ -45,6 +45,8 @@ o.shortmess = o.shortmess .. 'c'
 -- always show signcolumns
 wo.signcolumn = 'yes'
 
+o.inccommand = "nosplit"
+
 -- Set completeopt to have a better completion experience
 o.completeopt = 'menuone,noinsert,noselect'
 
