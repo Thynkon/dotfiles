@@ -32,6 +32,7 @@ export CHROOT
 ## Android
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
 export ANDROID_AVD_HOME="$XDG_DATA_HOME/android"
+export ANDROID_HOME="${XDG_DATA_HOME}/android"
 export ANDROID_EMULATOR_HOME="$XDG_DATA_HOME/android"
 export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 
@@ -82,8 +83,12 @@ export PERL_MB_OPT="--install_base \"${PERL_HOME}\""
 export PERL_MM_OPT="INSTALL_BASE=${PERL_HOME}"
 
 ## Ruby
-export GEM_HOME="$XDG_DATA_HOME"/gem
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
+export GEM_HOME="${XDG_DATA_HOME}/gem"
+export GEM_SPEC_CACHE="${XDG_CACHE_HOME}/gem"
+export BUNDLE_USER_CONFIG="${XDG_CONFIG_HOME}/bundle"
+export BUNDLE_USER_CACHE="${XDG_CACHE_HOME}/bundle"
+export BUNDLE_USER_PLUGIN="${XDG_DATA_HOME}/bundle"
+export SOLARGRAPH_CACHE="${XDG_CACHE_HOME}/solargraph"
 
 ## Rust
 export CARGO_HOME=$XDG_DATA_HOME/cargo

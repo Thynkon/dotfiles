@@ -50,7 +50,6 @@ zstyle ':prezto:load' pmodule \
   'djui/alias-tips' \
   'spwhitt/nix-zsh-completions' \
   "plugins/adb" \
-  'plugins/cargo' \
   'plugins/colored-man-pages' \
   'plugins/docker-compose' \
   'plugins/fd' \
@@ -58,7 +57,6 @@ zstyle ':prezto:load' pmodule \
   'plugins/laravel' \
   'plugins/mvn' \
   'plugins/rust' \
-  'plugins/rustup' \
 
 #
 # Autosuggestions
