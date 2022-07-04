@@ -8,14 +8,10 @@ packer.startup(
     use {"wbthomason/packer.nvim", opt = true}
     -- Make sure you use single quotes
     -- Utility
-    use {"tpope/vim-vinegar"}
-    use {"liuchengxu/vista.vim"}
-    use {"wesQ3/vim-windowswap"}
-    use {"tpope/vim-dispatch"}
-    use {"tpope/vim-surround"}
+    use {"tpope/vim-surround"} -- TODO: find another plugin
     use {"preservim/nerdcommenter"}
-    use {"easymotion/vim-easymotion"}
-    use {"Yggdroot/indentLine"}
+    use {"easymotion/vim-easymotion"} -- show identation levels
+    use {"Yggdroot/indentLine"} -- format code
     use {"mhartington/formatter.nvim"}
 
     -- Generic Programming Support
@@ -25,16 +21,11 @@ packer.startup(
     use {"tpope/vim-endwise"}
 
     -- Markdown / Writting
-    use {"nvim-orgmode/orgmode"}
-    use {"tpope/vim-markdown"}
-    use {"dpelle/vim-LanguageTool"}
     use {"lervag/vimtex"}
 
     -- Git Support
-    use {"tpope/vim-fugitive"}
     use {"airblade/vim-gitgutter"}
-    use {"TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim"}
-    -- gitlens for nvim
+    use {"TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim"} -- gitlens for nvim
     use {"APZelos/blamer.nvim"}
 
     -- Collection of common configurations for the Nvim LSP client
@@ -58,7 +49,9 @@ packer.startup(
     use {"lukas-reineke/cmp-rg"}
     use {"saadparwaiz1/cmp_luasnip"}
     use {"onsails/lspkind-nvim"}
-    use {"tjdevries/colorbuddy.nvim"}
+    use {"tjdevries/colorbuddy.nvim"} -- VSCode 💡 for neovim's built-in LSP
+    use {"kosayoda/nvim-lightbulb"} -- Viewer & Finder for LSP symbols and tags
+    use {"liuchengxu/vista.vim"}
 
     -- For vsnip user.
     use {"hrsh7th/cmp-vsnip"}
@@ -67,27 +60,18 @@ packer.startup(
     -- Extentions to built-in LSP, for example, providing type inlay hints
     use {"tjdevries/lsp_extensions.nvim"}
 
+    -- Ruby
+    -- -- use {"suketa/nvim-dap-ruby", requires = "mfussenegger/nvim-dap"} -- debugger
+
     -- Filemanager
-    use {"vifm/vifm.vim"}
-    -- Search through files
+    use {"vifm/vifm.vim"} -- Search through files
     use {
       "nvim-telescope/telescope.nvim",
       requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
     }
 
-    -- Remote editing
-    use {'chipsenkbeil/distant.nvim'}
-
-    -- Python
-    -- pep8 indentation
-    use {"Vimjas/vim-python-pep8-indent"}
-
-    -- rust
-    use {"rust-lang/rust.vim"}
-
     -- Theme / Interface
     use {"norcalli/nvim-colorizer.lua"}
-    --Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  -- We recommend updating the parsers on update
     use {
       "nvim-treesitter/nvim-treesitter",
       run = function()
@@ -106,8 +90,6 @@ packer.startup(
 
     use {"ryanoasis/vim-devicons"}
     use {"joshdick/onedark.vim"}
-    -- launch terminal from neovim
-    use {"kosayoda/nvim-lightbulb"}
 
     use {"mattn/emmet-vim"}
   end
