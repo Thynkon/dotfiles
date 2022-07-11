@@ -82,8 +82,7 @@ packer.startup(
     use {"kyazdani42/nvim-web-devicons"}
     use(
       {
-        "famiu/feline.nvim",
-        tag = "v0.3.3",
+        "feline-nvim/feline.nvim",
         requires = {"SmiteshP/nvim-gps", opt = true}
       }
     )
