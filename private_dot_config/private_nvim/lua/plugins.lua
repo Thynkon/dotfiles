@@ -86,11 +86,20 @@ packer.startup(
         requires = {"SmiteshP/nvim-gps", opt = true}
       }
     )
+    use {
+      "kyazdani42/nvim-tree.lua",
+      requires = {
+        "kyazdani42/nvim-web-devicons" -- optional, for file icons
+      },
+      tag = "nightly" -- optional, updated every week. (see issue #1193)
+    }
 
     use {"ryanoasis/vim-devicons"}
     use {"joshdick/onedark.vim"}
 
     use {"mattn/emmet-vim"}
+
+    use {"SmiteshP/nvim-gps"}
   end
 )
 

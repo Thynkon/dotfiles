@@ -134,6 +134,9 @@ lsp.servers = {
   cssls = true,
   denols = true,
   gopls = true,
+  elixirls = {
+    cmd = {"elixir-ls"}
+  },
   html = true,
   solargraph = true,
   sumneko_lua = {
@@ -161,6 +164,7 @@ lsp.servers = {
       }
     }
   },
+  gopls = true,
   jsonls = true,
   perlls = true,
   phpactor = true,
