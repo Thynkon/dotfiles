@@ -133,7 +133,6 @@ lsp.servers = {
   },
   cssls = true,
   denols = true,
-  gopls = true,
   elixirls = {
     cmd = {"elixir-ls"}
   },
