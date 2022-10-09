@@ -17,6 +17,7 @@ require "nvim-treesitter.configs".setup {
     "nix",
     "php",
     "python",
+    "query", -- tsplaygroud
     "ruby",
     "rust",
     "scss",

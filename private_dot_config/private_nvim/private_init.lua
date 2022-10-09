@@ -1,8 +1,9 @@
 require("lib/aliases")
+-- vim.lsp.set_log_level("DEBUG")
 
 local config_dir = os.getenv("XDG_CONFIG_HOME")
 if config_dir == nil then
-    config_dir = "~/.config"
+  config_dir = "~/.config"
 end
 
 require("basic")
@@ -18,4 +19,3 @@ if api.nvim_eval('!exists("g:vscode")') then
 
   require("autoload/autocmd")
 end
-

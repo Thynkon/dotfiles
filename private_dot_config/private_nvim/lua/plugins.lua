@@ -36,7 +36,10 @@ packer.startup(
     use {"wbthomason/lsp-status.nvim"}
 
     -- Install Lsp servers
-    use {"williamboman/nvim-lsp-installer"}
+    use {"williamboman/mason.nvim"}
+    use {"williamboman/mason-lspconfig.nvim"}
+    -- Install formatters, linters (based on mason API)
+    use {"WhoIsSethDaniel/mason-tool-installer.nvim"}
 
     -- Lsp config
     use {"hrsh7th/nvim-cmp"}
@@ -52,6 +55,9 @@ packer.startup(
     use {"tjdevries/colorbuddy.nvim"} -- VSCode 💡 for neovim's built-in LSP
     use {"kosayoda/nvim-lightbulb"} -- Viewer & Finder for LSP symbols and tags
     use {"liuchengxu/vista.vim"}
+
+    -- Async linter
+    use {"mfussenegger/nvim-lint"}
 
     -- For vsnip user.
     use {"hrsh7th/cmp-vsnip"}
@@ -78,8 +84,10 @@ packer.startup(
         vim.api.nvim_command("TSUpdate")
       end
     }
-    use {"Th3Whit3Wolf/one-nvim"}
+    use "nvim-treesitter/playground"
     use {"kyazdani42/nvim-web-devicons"}
+    use {"navarasu/onedark.nvim"}
+    use "EdenEast/nightfox.nvim" -- Packer
     use(
       {
         "feline-nvim/feline.nvim",
