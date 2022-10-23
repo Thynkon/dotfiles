@@ -1,7 +1,16 @@
--- OR setup with some options
-require("nvim-tree").setup(
+local present, tree = pcall(require, "nvim-tree")
+
+if not present then
+  return
+end
+
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+tree.setup(
   {
-    sort_by = "case_insensitive",
+    sort_by = "case_sensitive",
     view = {
       adaptive_size = true,
       mappings = {

@@ -1,6 +1,10 @@
-local telescope = require("telescope")
+local present, ts = pcall(require, "telescope")
 
-telescope.setup {
+if not present then
+  return
+end
+
+ts.setup {
   defaults = {
     file_ignore_patterns = {
       -- JS

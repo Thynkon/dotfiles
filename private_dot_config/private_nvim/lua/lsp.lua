@@ -18,53 +18,31 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   }
 )
 
--- -- Use an on_attach function to only map the following keys
--- -- after the language server attaches to the current buffer
--- local on_attach = function(client, bufnr)
---   local function buf_set_keymap(...)
---     vim.api.nvim_buf_set_keymap(bufnr, ...)
---   end
---   local function buf_set_option(...)
---     vim.api.nvim_buf_set_option(bufnr, ...)
---   end
---
---   -- Enable completion triggered by <c-x><c-o>
---   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
---
---   -- Mappings.
---   local opts = {noremap = true, silent = true}
---
---   -- See `:help vim.lsp.*` for documentation on any of the below functions
---   buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
---   buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
---   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
---   buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
---   buf_set_keymap("n", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
---   buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
---   buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
---   buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
---   buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
---   -- buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
---   -- buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
---   -- buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
---   vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
---   buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
---   buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
---   buf_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
---   buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
---   buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
---   buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
---   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
--- end
-
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = {noremap = true, silent = true}
+
+opts.desc = "Show diagnostics in a floating window"
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+
+opts.desc = "Move to the previous diagnostic in the current buffer"
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+
+opts.desc = "Move to the next diagnostic"
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+
+opts.desc = "Add buffer diagnostics to the location list"
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+
+opts.desc = "Displays hover information about the symbol under the cursor"
 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
+local fn = vim.fn
+
+fn.sign_define("DiagnosticSignError", {text = "", texthl = "DiagnosticSignError"})
+fn.sign_define("DiagnosticSignWarn", {text = "", texthl = "DiagnosticSignWarn"})
+fn.sign_define("DiagnosticSignInfo", {text = "", texthl = "DiagnosticSignInfo"})
+fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticSignHint"})
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -72,13 +50,27 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = {noremap = true, silent = true, buffer = bufnr}
+  bufopts.desc = "Jumps to the declaration of the symbol under the cursor"
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+
+  bufopts.desc = "Jumps to the definition of the symbol under the cursor"
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+
+  -- TODO: bufopts.desc = "Jumps to the declaration of the symbol under the cursor"
   vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+
+  -- TODO: bufopts.desc = "Jumps to the declaration of the symbol under the cursor"
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+
+  -- TODO: bufopts.desc = "Jumps to the declaration of the symbol under the cursor"
   vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+
+  -- TODO: bufopts.desc = "Jumps to the declaration of the symbol under the cursor"
   vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+
+  -- TODO: bufopts.desc = "Jumps to the declaration of the symbol under the cursor"
   vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+
   vim.keymap.set(
     "n",
     "<leader>wl",
@@ -87,11 +79,19 @@ local on_attach = function(client, bufnr)
     end,
     bufopts
   )
+  bufopts.desc = "Jumps to the definition of the type of the symbol under the cursor"
   vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+
+  bufopts.desc = "Renames all references to the symbol under the cursor"
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+
+  bufopts.desc = "Selects a code action available at the current cursor position"
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+
+  bufopts.desc = "Lists all the references to the symbol under the cursor in the quickfix window"
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-  vim.keymap.set("n", "<leader>f", vim.lsp.buf.formatting, bufopts)
+
+  bufopts.desc = "Format code"
   vim.keymap.set(
     "n",
     "<leader>f",
@@ -110,7 +110,8 @@ end
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
 updated_capabilities = vim.tbl_deep_extend("keep", updated_capabilities, nvim_status.capabilities)
 updated_capabilities.textDocument.codeLens = {dynamicRegistration = false}
-updated_capabilities = require("cmp_nvim_lsp").update_capabilities(updated_capabilities)
+-- updated_capabilities = require("cmp_nvim_lsp").update_capabilities(updated_capabilities)
+updated_capabilities = require("cmp_nvim_lsp").default_capabilities(updated_capabilities)
 
 -- TODO: check if this is the problem.
 updated_capabilities.textDocument.completion.completionItem.insertReplaceSupport = false

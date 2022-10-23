@@ -1,4 +1,9 @@
-local mason = require("mason")
+local present, mason = pcall(require, "mason")
+
+if not present then
+  return
+end
+
 local mason_lspconfig = require("mason-lspconfig")
 local mason_tool_installer = require("mason-tool-installer")
 
@@ -26,9 +31,9 @@ mason_lspconfig.setup(
       "html",
       "jsonls",
       "tsserver",
-      "textlab",
+      -- "textlab",
       "sumneko_lua",
-      "remark_ks",
+      -- "remark_ks",
       "intelephense",
       "perlnavigator",
       "pylsp",

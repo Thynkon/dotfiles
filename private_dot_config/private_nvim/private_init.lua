@@ -8,7 +8,8 @@ end
 
 require("basic")
 require("keymap.standard")
-if api.nvim_eval('!exists("g:vscode")') then
+if not g.vscode then
+  -- require "core"
   require("keymap.telescope")
   require("plugins")
 
