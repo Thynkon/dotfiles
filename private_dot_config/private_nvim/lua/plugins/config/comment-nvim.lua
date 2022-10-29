@@ -1,8 +1,4 @@
-local present, comment = pcall(require, "comment")
-
-if not present then
-  return
-end
+local comment = require("Comment")
 
 comment.setup {
   ---Add a space b/w comment and the line

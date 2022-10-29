@@ -1,11 +1,6 @@
-local present, dapui = pcall(require, "dapui")
-
-if not present then
-  return
-end
-
 local key = require("lib/keybindings")
 local dap = require("dap")
+local dapui = require("dapui")
 
 dapui.setup(
   {
@@ -98,7 +93,7 @@ key.map("n", "<F11>", dap.step_into, opts)
 opts.desc = "Step out"
 key.map("n", "<F12>", dap.step_out, opts)
 
-opts.desc = "Toggle breakpoin"
+opts.desc = "Toggle breakpoint"
 key.map("n", "<leader>b", dap.toggle_breakpoint, opts)
 -- key.map("n", "<leader>B", dap.set_breakpoint(vim.fn.input("Breakpoint condition: ")), {noremap = true, silent = true})
 -- key.map(

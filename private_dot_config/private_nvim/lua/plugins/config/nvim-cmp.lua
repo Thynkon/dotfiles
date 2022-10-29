@@ -1,9 +1,3 @@
-local present, cmp = pcall(require, "cpm")
-
-if not present then
-  return
-end
-
 -- Complextras.nvim configuration
 vim.api.nvim_set_keymap(
   "i",
@@ -21,6 +15,8 @@ vim.api.nvim_set_keymap(
 
 local lspkind = require "lspkind"
 lspkind.init()
+
+local cmp = require "cmp"
 
 cmp.setup {
   mapping = {
