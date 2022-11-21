@@ -112,6 +112,8 @@ if [[ ! -f "${ZPLUG_REPOS}" ]]; then
 fi
 export ZPLUG_REPOS
 export STARSHIP_CONFIG=~/.config/starship/config.toml
+export FZF_PATH="${XDG_CONFIG_HOME}/fzf"
+export FZF_PREVIEW_ADVANCED=true
 
 ### PATH
 # Android studio
@@ -131,18 +133,20 @@ PATH=$HOME/programming/mess-cleaner:$PATH
 PATH=/usr/bin/core_perl:$PATH
 PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"
 
+# NeoVIM LSP
+PATH="${XDG_DATA_HOME}/nvim/mason/bin:${PATH}"
+
 # NPM
 PATH=$XDG_DATA_HOME/npm/bin/:$PATH
 
 # Ruby
 PATH=$GEM_HOME/bin:$PATH
+PATH="$HOME/.rvm/bin:$PATH"
 
 # Rust environment
 PATH=$XDG_DATA_HOME/cargo/bin:$PATH
 
 # Python virtualenv
 PATH=$HOME/.local/bin:$PATH
-
-PATH=$HOME/dev/servo/python:$PATH
 
 export PATH

@@ -1,0 +1,81 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Source Prezto.
+if [[ -s "${XDG_DATA_HOME}/zprezto/init.zsh" ]]; then
+  source "${XDG_DATA_HOME}/zprezto/init.zsh"
+fi
+
+# load aliases
+if [[ -f "${HOME}/.aliases" ]]; then
+  source "${HOME}/.aliases"
+fi
+
+function zvm_config() {
+### VIM mode
+ZVM_VI_ESCAPE_BINDKEY='jk'
+# bindkey -v
+#
+# # Map "jk" to "esc"
+# bindkey 'jk' vi-cmd-mode
+
+# If KEYTIMEOUT is lesser than 20ms the
+# keybing above wont work
+# export KEYTIMEOUT=20
+ZVM_KEYTIMEOUT=0.2
+
+ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BEAM
+ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
+# The prompt cursor in normal mode
+ZVM_NORMAL_MODE_CURSOR="<"
+# The prompt cursor in insert mode
+ZVM_INSERT_MODE_CURSOR=">"
+# The prompt cursor in visual mode
+ZVM_VISUAL_MODE_CURSOR="v"
+# The prompt cursor in visual line mode
+# ZVM_VISUAL_LINE_MODE_CURSOR
+# The prompt cursor in operator pending mode
+# ZVM_OPPEND_MODE_CURSOR
+}
+
+# enable zsh's completion menu
+zmodload zsh/complist
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'j' vi-backward-char
+bindkey -M menuselect 'l' vi-up-line-or-history
+bindkey -M menuselect 'é' vi-forward-char
+bindkey -M menuselect 'k' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# User configuration
+export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
+
+### Functions
+getspec() {
+  rpm2cpio $1 | cpio -civ '*.spec'
+}
+
+[[ -f "${XDG_CONFIG_HOME}/fzf/fzf.zsh" ]] && source "${XDG_CONFIG_HOME}/fzf/fzf.zsh"
+
+# Enable fzf completions
+
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
+
+
+[[ -f "${XDG_CONFIG_HOME}/p10k.zsh" ]] && source "${XDG_CONFIG_HOME}/p10k.zsh"
+[[ -f "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+eval "$(sheldon source)"
+
+
+[[ -f "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"
