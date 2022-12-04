@@ -41,6 +41,14 @@ packer.startup(
       end
     }
 
+    use {
+      "kevinhwang91/nvim-ufo",
+      requires = "kevinhwang91/promise-async",
+      config = function()
+        require "plugins.config.nvim-ufo"
+      end
+    }
+
     -- Markdown / Writting
     use {"lervag/vimtex"}
     use {
@@ -52,8 +60,18 @@ packer.startup(
     }
 
     -- Git Support
-    use {"APZelos/blamer.nvim"}
-    use {"lewis6991/gitsigns.nvim"}
+    use {
+      "APZelos/blamer.nvim",
+      config = function()
+        require "plugins.config.blamer-nvim"
+      end
+    }
+    use {
+      "lewis6991/gitsigns.nvim",
+      config = function()
+        require "plugins.config.gitsigns-nvim"
+      end
+    }
 
     -- Collection of common configurations for the Nvim LSP client
     use {
@@ -147,6 +165,13 @@ packer.startup(
       "nvim-treesitter/nvim-treesitter",
       run = function()
         vim.api.nvim_command("TSUpdate")
+      end
+    }
+    -- Notifications
+    use {
+      "rcarriga/nvim-notify",
+      config = function()
+        require "plugins.config.nvim-notify"
       end
     }
     -- Status line
