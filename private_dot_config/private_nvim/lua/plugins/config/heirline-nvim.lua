@@ -112,24 +112,19 @@ local FileName = {
     if self.lfilename == "" then
       self.lfilename = "[No Name]"
     end
-    if not conditions.width_percent_below(#self.lfilename, 0.27) then
-      self.lfilename = vim.fn.pathshorten(self.lfilename)
-    end
   end,
-  hl = "Directory",
-  utils.make_flexible_component(
-    2,
-    {
-      provider = function(self)
-        return self.lfilename
-      end
-    },
-    {
-      provider = function(self)
-        return vim.fn.pathshorten(self.lfilename)
-      end
-    }
-  )
+  hl = {fg = utils.get_highlight("Directory").fg},
+  flexible = 2,
+  {
+    provider = function(self)
+      return self.lfilename
+    end
+  },
+  {
+    provider = function(self)
+      return vim.fn.pathshorten(self.lfilename)
+    end
+  }
 }
 
 local FileFlags = {
@@ -526,40 +521,32 @@ local DAPMessages = {
 }
 
 local WorkDir = {
-  provider = function(self)
+  init = function(self)
     self.icon = (vim.fn.haslocaldir(0) == 1 and "l" or "g") .. " " .. " "
     local cwd = vim.fn.getcwd(0)
     self.cwd = vim.fn.fnamemodify(cwd, ":~")
-    if not conditions.width_percent_below(#self.cwd, 0.27) then
-      self.cwd = vim.fn.pathshorten(self.cwd)
-    end
   end,
   hl = {fg = "blue", bold = true},
-  on_click = {
-    callback = function()
-      vim.cmd("NvimTreeToggle")
-    end,
-    name = "heirline_workdir"
+  flexible = 1,
+  {
+    -- evaluates to the full-lenth path
+    provider = function(self)
+      local trail = self.cwd:sub(-1) == "/" and "" or "/"
+      return self.icon .. self.cwd .. trail .. " "
+    end
   },
-  utils.make_flexible_component(
-    1,
-    {
-      provider = function(self)
-        local trail = self.cwd:sub(-1) == "/" and "" or "/"
-        return self.icon .. self.cwd .. trail .. " "
-      end
-    },
-    {
-      provider = function(self)
-        local cwd = vim.fn.pathshorten(self.cwd)
-        local trail = self.cwd:sub(-1) == "/" and "" or "/"
-        return self.icon .. cwd .. trail .. " "
-      end
-    },
-    {
-      provider = ""
-    }
-  )
+  {
+    -- evaluates to the shortened path
+    provider = function(self)
+      local cwd = vim.fn.pathshorten(self.cwd)
+      local trail = self.cwd:sub(-1) == "/" and "" or "/"
+      return self.icon .. cwd .. trail .. " "
+    end
+  },
+  {
+    -- evaluates to "", hiding the component
+    provider = ""
+  }
 }
 
 local HelpFilename = {
@@ -622,7 +609,8 @@ local DefaultStatusline = {
   Space,
   Diagnostics,
   Align,
-  utils.make_flexible_component(3, {Navic, Space}, {provider = ""}),
+  Navic,
+  Space,
   Align,
   DAPMessages,
   LSPActive,
@@ -630,7 +618,8 @@ local DefaultStatusline = {
   -- UltTest,
   Space,
   FileType,
-  utils.make_flexible_component(3, {Space, FileEncoding}, {provider = ""}),
+  Space,
+  FileEncoding,
   Space,
   Ruler,
   Space,
