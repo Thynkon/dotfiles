@@ -1,6 +1,6 @@
-local key = require('lib/keybindings')
+local key = require("lib/keybindings")
 
-cmd('syntax on')
+cmd("syntax on")
 
 opt.wrap = false
 
@@ -18,7 +18,7 @@ opt.ruler = true
 bo.textwidth = 79
 
 -- Copy to system's clipboard using yy
-o.clipboard = 'unnamedplus'
+o.clipboard = "unnamedplus"
 
 -- Always display the status line
 o.laststatus = 2
@@ -40,24 +40,24 @@ o.cmdheight = 2
 o.updatetime = 300
 
 -- don't give |ins-completion-menu| messages.
-o.shortmess = o.shortmess .. 'c'
+o.shortmess = o.shortmess .. "c"
 
 -- always show signcolumns
-wo.signcolumn = 'yes'
+wo.signcolumn = "yes"
 
 o.inccommand = "nosplit"
 
 -- Set completeopt to have a better completion experience
-o.completeopt = 'menuone,noinsert,noselect'
+o.completeopt = "menuone,noinsert,noselect"
 
-api.nvim_command('filetype plugin indent on')
+api.nvim_command("filetype plugin indent on")
 bo.tabstop = 4
 bo.shiftwidth = 4
 -- go.expandtab = true
-vim.cmd('set expandtab')
+vim.cmd("set expandtab")
 
 -- Disable arrow movement, resize splits instead.
-key.map('n', '<Up>', ':resize -2<CR>', {noremap = true})
-key.map('n', '<Down>', ':resize +2<CR>', {noremap = true})
-key.map('n', '<Left>', ':vertical resize -2<CR>', {noremap = true})
-key.map('n', '<Right>', ':vertical resize +2<CR>', {noremap = true})
+key.map("n", "<Up>", ":resize -2<CR>", {noremap = true})
+key.map("n", "<Down>", ":resize +2<CR>", {noremap = true})
+key.map("n", "<Left>", ":vertical resize -2<CR>", {noremap = true})
+key.map("n", "<Right>", ":vertical resize +2<CR>", {noremap = true})

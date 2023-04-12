@@ -1,23 +1,3 @@
-require("formatter").setup(
-  {
-    filetype = {
-      elixir = {
-        -- rubocop
-        function()
-          return {
-            exe = "mix",
-            args = {
-              "format",
-              "-"
-            },
-            stdin = true
-          }
-        end
-      }
-    }
-  }
-)
-
 local dap = require("dap")
 dap.adapters.mix_task = {
   type = "executable",

@@ -1,78 +1,78 @@
 -- Complextras.nvim configuration
 vim.api.nvim_set_keymap(
-  "i",
-  "<C-x><C-m>",
-  [[<c-r>=luaeval("require('complextras').complete_matching_line()")<CR>]],
-  {noremap = true}
+	"i",
+	"<C-x><C-m>",
+	[[<c-r>=luaeval("require('complextras').complete_matching_line()")<CR>]],
+	{ noremap = true }
 )
 
 vim.api.nvim_set_keymap(
-  "i",
-  "<C-x><C-d>",
-  [[<c-r>=luaeval("require('complextras').complete_line_from_cwd()")<CR>]],
-  {noremap = true}
+	"i",
+	"<C-x><C-d>",
+	[[<c-r>=luaeval("require('complextras').complete_line_from_cwd()")<CR>]],
+	{ noremap = true }
 )
 
-local lspkind = require "lspkind"
+local lspkind = require("lspkind")
 lspkind.init()
 
-local cmp = require "cmp"
+local cmp = require("cmp")
 
-cmp.setup {
-  mapping = {
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-e>"] = cmp.mapping.close(),
-    ["<c-y>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true
-    },
-    ["<c-space>"] = cmp.mapping.complete()
-  },
-  -- Youtube:
-  --    the order of your sources matter (by default). That gives them priority
-  --    you can configure:
-  --        keyword_length
-  --        priority
-  --        max_item_count
-  --        (more?)
-  sources = {
-    {name = "gh_issues"},
-    -- Youtube: Could enable this only for lua, but nvim_lua handles that already.
-    {name = "nvim_lua"},
-    {name = "nvim_lsp"},
-    {name = "orgmode"},
-    {name = "path"},
-    {name = "luasnip"},
-    {name = "buffer", keyword_length = 5}
-  },
-  -- Youtube: mention that you need a separate snippets plugin
-  snippet = {
-    expand = function(args)
-      require("luasnip").lsp_expand(args.body)
-    end
-  },
-  formatting = {
-    -- Youtube: How to set up nice formatting for your sources.
-    format = lspkind.cmp_format {
-      with_text = true,
-      menu = {
-        buffer = "[buf]",
-        nvim_lsp = "[LSP]",
-        nvim_lua = "[api]",
-        path = "[path]",
-        luasnip = "[snip]",
-        gh_issues = "[issues]"
-      }
-    }
-  },
-  experimental = {
-    -- I like the new menu better! Nice work hrsh7th
-    native_menu = false,
-    -- Let's play with this for a day or two
-    ghost_text = true
-  }
-}
+cmp.setup({
+	mapping = {
+		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-e>"] = cmp.mapping.close(),
+		["<c-y>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Insert,
+			select = true,
+		}),
+		["<c-space>"] = cmp.mapping.complete(),
+	},
+	-- Youtube:
+	--    the order of your sources matter (by default). That gives them priority
+	--    you can configure:
+	--        keyword_length
+	--        priority
+	--        max_item_count
+	--        (more?)
+	sources = {
+		{ name = "gh_issues" },
+		-- Youtube: Could enable this only for lua, but nvim_lua handles that already.
+		{ name = "nvim_lua" },
+		{ name = "nvim_lsp" },
+		{ name = "orgmode" },
+		{ name = "path" },
+		{ name = "luasnip" },
+		{ name = "buffer", keyword_length = 5 },
+	},
+	-- Youtube: mention that you need a separate snippets plugin
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end,
+	},
+	formatting = {
+		-- Youtube: How to set up nice formatting for your sources.
+		format = lspkind.cmp_format({
+			with_text = true,
+			menu = {
+				buffer = "[buf]",
+				nvim_lsp = "[LSP]",
+				nvim_lua = "[api]",
+				path = "[path]",
+				luasnip = "[snip]",
+				gh_issues = "[issues]",
+			},
+		}),
+	},
+	experimental = {
+		-- I like the new menu better! Nice work hrsh7th
+		native_menu = false,
+		-- Let's play with this for a day or two
+		ghost_text = true,
+	},
+})
 
 --[[
 " Setup buffer configuration (nvim-lua source only enables in Lua filetype).
@@ -86,12 +86,12 @@ autocmd FileType lua lua require'cmp'.setup.buffer {
 \ }
 --]]
 -- Add vim-dadbod-completion in sql files
-vim.cmd [[
+vim.cmd([[
         augroup DadbodSql
         au!
         autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }
         augroup END
-]]
+]])
 
 -- Youtube: customizing appearance
 --
