@@ -24,6 +24,12 @@ for mode in string.gmatch("nv", ".") do
   })
 end
 
+vim.keymap.set("n", "<leader>nb", function()
+  require("nvim-navbuddy").open()
+end, {
+  desc = "Open LSP navigation bar",
+})
+
 vim.keymap.set("n", "<Space>", ":set hlsearch!<CR>", {
   noremap = true,
   silent = false,

@@ -1,6 +1,15 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        "SmiteshP/nvim-navbuddy",
+        dependencies = {
+          "SmiteshP/nvim-navic",
+          "MunifTanjim/nui.nvim",
+        },
+      },
+    },
     opts = {
       setup = {
         clangd = function(_, opts)

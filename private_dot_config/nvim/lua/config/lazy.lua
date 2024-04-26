@@ -23,6 +23,11 @@ require("lazy").setup({
     {
       import = "lazyvim.plugins.extras.vscode",
     },
+    { import = "lazyvim.plugins.extras.lang.cmake" },
+    { import = "lazyvim.plugins.extras.lang.clangd" },
+    { import = "lazyvim.plugins.extras.lang.elixir" },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
+    { import = "lazyvim.plugins.extras.lang.ruby" },
     {
       import = "plugins",
     },
