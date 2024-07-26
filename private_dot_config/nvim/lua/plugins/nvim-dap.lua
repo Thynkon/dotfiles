@@ -20,7 +20,8 @@ return {
           host = "localhost",
           port = "${port}",
           executable = {
-            command = "codelldb",
+            command = "/home/thynkon/.local/share/nvim/mason/bin/codelldb",
+            -- command = "codelldb",
             args = {
               "--port",
               "${port}",

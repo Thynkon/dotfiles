@@ -23,10 +23,11 @@ return {
       },
       ---@type table<string, conform.FormatterUnit[]>
       formatters_by_ft = {
-        lua = { "stylua" },
-        fish = { "fish_indent" },
-        sh = { "shfmt" },
         cpp = { "clang-format" },
+        elixir = { "mix" },
+        fish = { "fish_indent" },
+        lua = { "stylua" },
+        sh = { "shfmt" },
       },
       -- The options you set here will be merged with the builtin formatters.
       -- You can also define any custom formatters here.
@@ -44,20 +45,6 @@ return {
         -- shfmt = {
         --   prepend_args = { "-i", "2", "-ci" },
         -- },
-      },
-      -- If this is set, Conform will run the formatter on save.
-      -- It will pass the table to conform.format().
-      -- This can also be a function that returns the table.
-      format_on_save = {
-        -- I recommend these options. See :help conform.format for details.
-        lsp_fallback = true,
-        timeout_ms = 500,
-      },
-      -- If this is set, Conform will run the formatter asynchronously after save.
-      -- It will pass the table to conform.format().
-      -- This can also be a function that returns the table.
-      format_after_save = {
-        lsp_fallback = true,
       },
       -- Set the log level. Use `:ConformInfo` to see the location of the log file.
       log_level = vim.log.levels.ERROR,

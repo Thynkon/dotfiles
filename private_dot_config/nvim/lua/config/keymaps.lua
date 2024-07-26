@@ -34,3 +34,6 @@ vim.keymap.set("n", "<Space>", ":set hlsearch!<CR>", {
   noremap = true,
   silent = false,
 })
+
+vim.keymap.set("n", "<S-j>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<S-é>", "<cmd>bnext<cr>", { desc = "Next Buffer" })

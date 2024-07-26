@@ -47,6 +47,7 @@ return {
         timeout_ms = nil,
       },
       servers = {
+        perlnavigator = {},
         cssls = {},
         elixirls = {
           cmd = { "elixir-ls" },
