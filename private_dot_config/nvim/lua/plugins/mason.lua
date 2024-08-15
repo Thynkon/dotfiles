@@ -4,8 +4,9 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "elixir-ls",
-        "zls",
+        "elp",
         "perlnavigator",
+        "zls",
       })
     end,
   },

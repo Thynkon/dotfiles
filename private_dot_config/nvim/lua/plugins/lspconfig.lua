@@ -49,9 +49,6 @@ return {
       servers = {
         perlnavigator = {},
         cssls = {},
-        elixirls = {
-          cmd = { "elixir-ls" },
-        },
         html = {},
         rust_analyzer = {},
         tailwindcss = {},
@@ -93,6 +90,7 @@ return {
           },
         },
         zls = {},
+        elp = {},
       },
     },
   },

@@ -10,6 +10,7 @@ return {
         "eex",
         "elixir",
         "erlang",
+        "hyprlang",
         "go",
         "heex",
         "html",
