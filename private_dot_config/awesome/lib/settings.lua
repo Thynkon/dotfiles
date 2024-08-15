@@ -1,32 +1,31 @@
-
 local themes = {
-  "no-wibar",
-  "holo",
-  "theme8",
-  "doom-one"
+	"no-wibar",
+	"holo",
+	"theme8",
+	"whitesur-firefox",
 }
 
 local settings = {
-        modkey = "Mod1",
-        superkey = "Mod4",
-        ctrlkey = "Control",
+	modkey = "Mod4",
+	superkey = "Mod4",
+	ctrlkey = "Control",
 
-        -- personal variables
-        --change these variables if you want
-        browser = "firefox-devedition",
-        editorgui = "codium",
-        filemanager = "thunar",
-        mailclient = "thunderbird",
-        imageeditor = "gimp",
-        terminal = "alacritty",
-        virtualmachine = "virtualbox",
-        screenshotutility = "flameshot gui",
-        desktopenvironment = "XFCE",
-        volume_step = 5,
-        brightness_step = 10,
-        bar = "wibar",
-        rofi_config = string.format("%s/.config/rofi", os.getenv("HOME")),
-        theme = themes[3],
+	-- personal variables
+	--change these variables if you want
+	browser = "librewolf",
+	editorgui = "codium",
+	filemanager = "thunar",
+	mailclient = "thunderbird",
+	imageeditor = "gimp",
+	terminal = "wezterm",
+	virtualmachine = "virtualbox",
+	screenshotutility = "flameshot gui",
+	desktopenvironment = "XFCE",
+	volume_step = 5,
+	brightness_step = 10,
+	bar = "wibar",
+	rofi_theme = "type-3",
+	theme = themes[4],
 }
 
 return settings
