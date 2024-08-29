@@ -1,0 +1,30 @@
+layout {
+    pane split_direction="Vertical" {
+        pane {
+          name "main"
+        }
+    }
+    pane split_direction="Vertical" {
+      pane {
+        command "~/.config/zellij/scripts/pwngdb.sh"
+        args "bt"
+        name "backtrace"
+      }
+      pane {
+        command "~/.config/zellij/scripts/pwngdb.sh"
+        args "st"
+        name "stack"
+      }
+      pane {
+        command "~/.config/zellij/scripts/pwngdb.sh"
+        args "re"
+        name "registers"
+      }
+      pane {
+        command "~/.config/zellij/scripts/pwngdb.sh"
+        args "di"
+        name "disasm"
+      }
+    }
+}
+

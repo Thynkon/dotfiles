@@ -1,0 +1,3 @@
+source /usr/share/pwndbg/gdbinit.py
+set debuginfod enabled on
+source ~/.config/gdb/zellij-pwngdb.py
