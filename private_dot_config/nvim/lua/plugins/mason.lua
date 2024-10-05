@@ -3,9 +3,10 @@ return {
     "williamboman/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
-        "elixir-ls",
         "elp",
+        "jdtls",
         "perlnavigator",
+        "typst-lsp",
         "zls",
       })
     end,
