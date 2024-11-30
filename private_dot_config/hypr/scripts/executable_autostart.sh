@@ -29,8 +29,8 @@ run waybar
 run hyprpaper
 run blueman-applet
 
-run eww daemon -c $HOME/.config/eww-which-key
-run hyprpm reload -n
-run hyprpm update -v
+# run eww daemon -c $HOME/.config/eww-which-key
+hyprpm reload -n
+hyprpm update -v
 
 exit 0
