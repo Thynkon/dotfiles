@@ -7,6 +7,9 @@ return {
         "neovim/nvim-lspconfig",
         "nvim-java/nvim-java-refactor",
         opts = {
+          jdk = {
+            auto_install = false,
+          },
           servers = {
             jdtls = {
               -- Your custom jdtls settings goes here
