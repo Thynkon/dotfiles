@@ -149,4 +149,6 @@ PATH=$XDG_DATA_HOME/cargo/bin:$PATH
 # Python virtualenv
 PATH=$HOME/.local/bin:$PATH
 
+PATH=/opt/asdf-vm/bin/:$PATH
+
 export PATH
