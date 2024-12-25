@@ -1,0 +1,21 @@
+layout {
+  default_tab_template
+  tab name="code" focus=true {
+    pane {
+      command "nvim"
+      // cwd "/home/thynkon/programming/personal/ex-docker/"
+    }
+  }
+  tab name="iex" {
+    pane split_direction="vertical" {
+      pane {
+        command "iex"
+        args "-S" "mix"
+        // cwd "/home/thynkon/programming/personal/ex-docker/"
+      }
+      pane {
+        cwd "/home/thynkon/programming/personal/ex-docker/"
+      }
+    }
+  }
+}
