@@ -1,0 +1,7 @@
+alias o="xdg-open"
+alias as="android-studio"
+alias ave="source ./venv/bin/activate"
+alias cm="chezmoi"
+alias ls="lsd"
+alias mvn="mvn -gs "$XDG_CONFIG_HOME"/maven/settings.xml"
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
