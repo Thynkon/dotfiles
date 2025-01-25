@@ -109,3 +109,10 @@
 #temperature.critical {
   background-color: red;
 }
+
+#custom-pinnacle {
+  color: #ffffff;
+  background: #333333;
+  padding: 5px;
+  border-radius: 5px;
+}

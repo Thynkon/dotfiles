@@ -6,16 +6,18 @@
   // "width": 1280, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
+  "custom/pinnacle": {
+    //"exec": "~/.config/waybar/scripts/pinnacle.lua",
+    "exec": "~/.config/waybar/scripts/bar.rb",
+    //"on-click": "dunstctl set-paused toggle",
+    "interval": 1,
+  },
   "modules-left": [
-    //"river/tags"
-    //"hyprland/mode"
-    //"hyprland/scratchpad",
-    "hyprland/workspaces"
-    //"workspaces"
+    "sway/workspaces"
   ],
-  //"modules-center": [
-  //"hyprland/window"
-  //],
+  "modules-center": [
+    "sway/window"
+  ],
   "modules-right": [
     "idle_inhibitor",
     "pulseaudio",
