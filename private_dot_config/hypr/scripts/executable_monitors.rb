@@ -6,14 +6,17 @@ monitors_json = `hyprctl monitors -j`
 monitors = JSON.parse(monitors_json)
 
 laptop = 'eDP-1'
+laptop_res = 0
 
 monitors.each do |monitor|
   name = monitor['name']
   max_freq = monitor['availableModes'].max_by do |mode|
-    mode.split('@')[1].sub('Hz', '').to_i
+    res, freq = mode.split('@')
+    laptop_res = res if name == laptop
+    freq.sub('Hz', '').to_i
   end
 
-  width = max_freq.split('x').first
+  width = laptop_res.split('x').first
 
   if name == laptop
     system("hyprctl keyword monitor \"#{name},#{max_freq}, 0x0, 1\"")

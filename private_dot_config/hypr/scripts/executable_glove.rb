@@ -14,4 +14,5 @@ mod = 'SUPER'
 # Print Hyprland bindings
 kp_keys.each do |i, key|
   system "hyprctl keyword bind #{mod},#{key},split:workspace,#{i}"
+  system "hyprctl keyword bind #{mod} SHIFT,#{key},split:movetoworkspacesilent,#{i}"
 end

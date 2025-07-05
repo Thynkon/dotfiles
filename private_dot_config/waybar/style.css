@@ -1,118 +1,204 @@
-@import "mocha.css";
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+ 
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+
+/*
+Polar Night
+nord0  #2e3440
+nord1  #3b4252
+nord2  #434c5e
+nord3  #4c566a
+Snow Storm
+nord4  #d8dee9
+nord5  #e5e9f0
+nord6  #eceff4
+Frost
+nord7  #8fbcbb
+nord8  #88c0d0
+nord9  #81a1c1
+nord10 #5e81ac
+Aurora
+nord11 #bf616a
+nord12 #d08770
+nord13 #ebcb8b
+nord14 #a3be8c
+nord15 #b48ead
+*/
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+ 
+/* Reset all styles */
 
 * {
-  font-family: FantasqueSansMono Nerd Font;
-  font-size: 14px;
-  min-height: 0;
-}
+    color: #eceff4;
+    border: 1px;
+    border-radius: 5px;
+    padding: 0 0;
+    font-family:JetBrainsMono, SymbolsNerdFont;
+    font-size: 15px;
+    margin-right: 2px;
+    margin-left: 2px;
+    padding-bottom:2px;
+   }
 
-#waybar {
-  background: transparent;
-  color: @text;
-  margin: 2px 2px;
-}
-
-#workspaces {
-  border-radius: 1rem;
-  margin: 5px;
-  background-color: @surface0;
-  /* margin-left: 1rem; */
+window#waybar {
+    background:#2e3440;
+    background-color:rgba(43, 45, 50, 0.6);
 }
 
 #workspaces button {
-  color: @lavender;
-  border-radius: 1rem;
-  padding: 0.4rem;
+    padding: 2px 8px;
+    border-bottom: 2px;
+    color: #eceff4;
+    border-color: #d8dee9;
+    border-style: solid;
+    margin-top:2px;
 }
 
-#workspaces button.active {
-  color: @sky;
-  border-radius: 1rem;
+#workspaces button.focused {
+    border-color: #81a1c1;
 }
 
-#workspaces button:hover {
-  color: @sapphire;
-  border-radius: 1rem;
+#mode {
+    color: #ebcb8b;
 }
 
-#custom-music,
-#tray,
-#backlight,
-#clock,
-#battery,
-#pulseaudio,
+#custom-launcher,
+#mode,
+#window,
+#network,
+#custom-updates,
+#custom-keyboard-layout,
 #cpu,
-#power-profiles-daemon,
-#memory,
 #temperature,
-#custom-lock,
-#custom-power {
-  background-color: @surface0;
-  padding: 0.5rem 0.5rem;
-  /* margin: 5px 0; */
-}
-
-#clock {
-  color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
-}
-
-#battery {
-  color: @green;
-}
-
-#battery.charging {
-  color: @green;
-}
-
-#battery.warning:not(.charging) {
-  color: @red;
-}
-
-#backlight {
-  color: @yellow;
-}
-
+#memory,
+#idle_inhibitor,
 #backlight,
-#battery {
-  border-radius: 0;
-}
-
-#pulseaudio {
-  color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
-}
-
-#custom-music {
-  color: @mauve;
-  border-radius: 1rem;
-}
-
-#custom-lock {
-  border-radius: 1rem 0px 0px 1rem;
-  color: @lavender;
-}
-
+#pulseaudio,
+#battery,
+#clock,
+#tray,
 #custom-power {
-  margin-right: 1rem;
-  border-radius: 0px 1rem 1rem 0px;
-  color: @red;
+    padding: 2px 8px;
+    border: 1px;
+    border-bottom: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    margin-top: 1px;
 }
 
-#tray {
-  /* margin-right: 1rem; */
-  border-radius: 1rem;
+ 
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+
+#custom-launcher {
+    border-style: hidden;
+    margin-top:2px;
+}
+    
+#mode{
+    margin-bottom:3px;
+}
+
+#window{
+    border-style: hidden;
+    margin-top:1px;
+}
+
+#network {
+    color:#81a1c1;
+}
+
+#network.disabled,#network.disconnected {
+    color:#bf616a;
+}
+
+#custom-updates{
+	color: #ebcb8b;
+}
+
+#custom-keyboard-layout{
+   color:#d08770;
+}
+
+#cpu {
+    color:#a3be8c;
+}
+
+#temperature {
+    color: #8fbcbb;
 }
 
 #temperature.critical {
-  background-color: red;
+    color: #bf616a;
 }
 
-#custom-pinnacle {
-  color: #ffffff;
-  background: #333333;
-  padding: 5px;
-  border-radius: 5px;
+#memory {
+    color: #b48ead;
+}
+
+#idle_inhibitor {
+   color: #81a1c1;
+}
+
+#backlight {
+    color: #ebcb8b;
+}
+
+#pulseaudio {
+    color: #b48ead;
+}
+
+#pulseaudio.muted {
+    color: #3b4252;
+}
+
+#battery {
+    color: #d8dee9;
+}
+
+#battery.charging {
+    color: #81a1c1;
+}
+
+@keyframes blink {
+    to {
+        color: #4c566a;
+        background-color: #eceff4;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background: #bf616a;
+    color: #eceff4;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#clock {
+ color: #a3be8c;
+}
+
+#tray {
+}
+
+#custom-power{
+    border-style: hidden;
+    margin-top:2px;
 }
