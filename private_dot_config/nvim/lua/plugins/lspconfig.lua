@@ -47,7 +47,6 @@ return {
         timeout_ms = nil,
       },
       servers = {
-        perlnavigator = {},
         cssls = {},
         html = {},
         rust_analyzer = {},
@@ -89,13 +88,39 @@ return {
             fallbackFlags = { "-std=c++20" },
           },
         },
-        zls = {},
         elp = {},
         typst_lsp = {
           settings = {
             exportPdf = "onType", -- Choose onType, onSave or never.
             -- serverPath = "" -- Normally, there is no need to uncomment it.
           },
+        },
+        asm_lsp = {
+          -- root_dir = function(fname)
+          --   return require("lspconfig.util").root_pattern(
+          --     "Makefile",
+          --     "configure.ac",
+          --     "configure.in",
+          --     "config.h.in",
+          --     "meson.build",
+          --     "meson_options.txt",
+          --     "build.ninja"
+          --   )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(
+          --     fname
+          --   ) or require("lspconfig.util").find_git_ancestor(fname)
+          -- end,
+          -- capabilities = {
+          --   offsetEncoding = { "utf-16" },
+          -- },
+          -- cmd = {
+          --   "asm-lsp",
+          -- },
+          -- init_options = {
+          --   usePlaceholders = true,
+          --   completeUnimported = true,
+          --   clangdFileStatus = true,
+          --   fallbackFlags = { "-std=c++20" },
+          -- },
         },
       },
     },

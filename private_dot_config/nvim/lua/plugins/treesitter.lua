@@ -3,6 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
+        "asm",
         "bash",
         "c",
         "cpp",
@@ -18,7 +19,6 @@ return {
         "json",
         "lua",
         "markdown",
-        "nix",
         "php",
         "python",
         "query", -- tsplaygroud
