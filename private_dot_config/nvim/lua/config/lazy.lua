@@ -13,10 +13,8 @@ require("lazy").setup({
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
     }, -- import any extras modules here
-    -- { import = "lazyvim.plugins.extras.lang.typescript" },
-    -- { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },
-    -- import/override with your plugins
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
     {
       { import = "lazyvim.plugins.extras.dap.core" },
       { import = "lazyvim.plugins.extras.dap.nlua" },
@@ -28,19 +26,28 @@ require("lazy").setup({
       { import = "lazyvim.plugins.extras.lang.clangd" },
       { import = "lazyvim.plugins.extras.lang.cmake" },
       { import = "lazyvim.plugins.extras.lang.docker" },
+      { import = "lazyvim.plugins.extras.lang.elixir" },
+      { import = "lazyvim.plugins.extras.lang.erlang" },
+      { import = "lazyvim.plugins.extras.lang.go" },
+      { import = "lazyvim.plugins.extras.lang.helm" },
       { import = "lazyvim.plugins.extras.lang.json" },
+      { import = "lazyvim.plugins.extras.lang.markdown" },
       { import = "lazyvim.plugins.extras.lang.php" },
       { import = "lazyvim.plugins.extras.lang.python" },
       { import = "lazyvim.plugins.extras.lang.ruby" },
       { import = "lazyvim.plugins.extras.lang.rust" },
       { import = "lazyvim.plugins.extras.lang.sql" },
+      { import = "lazyvim.plugins.extras.lang.tailwind" },
       { import = "lazyvim.plugins.extras.lang.toml" },
       { import = "lazyvim.plugins.extras.lang.typescript" },
+      { import = "lazyvim.plugins.extras.lang.vue" },
       { import = "lazyvim.plugins.extras.lang.yaml" },
       { import = "lazyvim.plugins.extras.lang.zig" },
     },
     { import = "lazyvim.plugins.extras.coding.neogen" },
+    { import = "lazyvim.plugins.extras.editor.dial" },
     { import = "lazyvim.plugins.extras.editor.inc-rename" },
+    { import = "lazyvim.plugins.extras.util.dot" },
     {
       import = "plugins",
     },
@@ -53,9 +60,7 @@ require("lazy").setup({
     -- have outdated releases, which may break your Neovim install.
     version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = {
-    colorscheme = { "kanagawa" },
-  },
+  install = {},
   checker = {
     enabled = true,
   }, -- automatically check for plugin updates

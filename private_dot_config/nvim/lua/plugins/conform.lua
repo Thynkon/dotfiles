@@ -27,6 +27,7 @@ return {
         elixir = { "mix" },
         fish = { "fish_indent" },
         lua = { "stylua" },
+        rust = { "rustfmt" },
         sh = { "shfmt" },
       },
       -- The options you set here will be merged with the builtin formatters.

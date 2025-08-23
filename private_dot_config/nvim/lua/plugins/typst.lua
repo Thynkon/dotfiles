@@ -1,7 +1,6 @@
 return {
   {
-    "williamboman/mason.nvim",
-    version = "^1.0.0",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "tinymist",

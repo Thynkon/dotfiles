@@ -1,27 +1,31 @@
-return {{
-    "phaazon/hop.nvim",
-    branch = "v2", -- optional but strongly recommended
-    keys = {{
+return {
+  {
+    "smoka7/hop.nvim",
+    version = "*",
+    keys = {
+      {
         "<leader><leader>w",
         function()
-            require("hop").hint_words()
+          require("hop").hint_words()
         end,
-        desc = "Jump to the beggining of words"
-    }, {
+        desc = "Hop to word",
+      },
+      {
         "<leader><leader>l",
         function()
-            require("hop").hint_lines()
+          require("hop").hint_lines()
         end,
-        desc = "Jump to the beggining of lines"
-    }, {
+        desc = "Hop to line",
+      },
+      {
         "<leader><leader>p",
         function()
-            require("hop").hint_patterns()
+          require("hop").hint_patterns()
         end,
-        desc = "Jump to a pattern (similar to /)"
-    }},
-    opts = {
-        keys = "etovxqpdygfblzhckisuran"
+        desc = "Hop to pattern",
+      },
     },
-    vscode = true
-}}
+    opts = { keys = "etovxqpdygfblzhckisuran" },
+    lazy = true,
+  },
+}
