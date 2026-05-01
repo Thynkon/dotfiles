@@ -1,40 +1,63 @@
-use pinnacle_api::input::{self, XkbConfig};
-use pinnacle_api::process::Command;
+mod config;
 
-mod keybinds;
-mod keyboards;
-mod layouts;
-mod monitors;
-mod rules;
-mod tags;
+use crate::config::tags;
+use pinnacle_api::input::Mod;
+use pinnacle_api::pinnacle::{self, Backend};
 
-async fn config() {
-    input::set_xkb_config(XkbConfig::new().with_layout("ch(fr)"));
-    //keyboards::setup();
-    keybinds::setup();
-    layouts::setup();
-    tags::setup();
+use pinnacle_api::tag;
+use std::io::{BufRead, BufReader};
+use std::os::unix::net::UnixListener;
+use std::thread;
 
-    input::libinput::for_each_device(|device| {
-        // Enable natural scroll for touchpads
-        if device.device_type().is_touchpad() {
-            device.set_natural_scroll(true);
+pub fn start_ipc_listener() {
+    thread::spawn(|| {
+        let socket_path = "/tmp/pinnacle-ipc.sock";
+        let _ = std::fs::remove_file(socket_path);
+
+        let listener = UnixListener::bind(socket_path).unwrap();
+
+        for stream in listener.incoming() {
+            if let Ok(stream) = stream {
+                let reader = BufReader::new(stream);
+                for line in reader.lines() {
+                    if let Ok(cmd) = line {
+                        // Parse "switch_tag X"
+                        if let Some(tag_name) = cmd.strip_prefix("switch_tag ") {
+                            if let Some(tag) = tag::get(tag_name) {
+                                tag.switch_to();
+                            }
+                        }
+                    }
+                }
+            }
         }
     });
-
-    rules::setup();
-
-    #[cfg(feature = "snowcap")]
-    if let Some(error) = pinnacle_api::pinnacle::take_last_error() {
-        // Show previous crash messages
-        pinnacle_api::snowcap::ConfigCrashedMessage::new().show(error);
-    }
-
-    monitors::layout();
-
-    Command::new("~/.config/pinnacle/autostart.sh")
-        .once()
-        .spawn();
 }
 
-pinnacle_api::main!(config);
+async fn config_main() {
+    let mod_key = match pinnacle::backend() {
+        Backend::Tty => Mod::SUPER,
+        Backend::Window => Mod::ALT,
+    };
+
+    let terminal = "wezterm";
+
+    config::startup::startup();
+    config::input::startup();
+
+    let _tags = tags::startup(mod_key);
+    let (cycler, requester) = config::layouts::startup();
+    config::keybinds::startup(mod_key, terminal, cycler, requester);
+    config::focus::startup();
+
+    config::outputs::startup();
+
+    #[cfg(feature = "snowcap")]
+    config::decorations::startup();
+
+    // start_ipc_listener();
+
+    pinnacle_api::process::Command::new(terminal).once().spawn();
+}
+
+pinnacle_api::main!(config_main);
