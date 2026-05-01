@@ -32,9 +32,11 @@ run udiskie
 
 run gpg-agent
 
-run waybar
+run ironbar
 run hyprpaper
 run blueman-applet
+
+# run "USE_LAYER_SHELL=0 vicinae server"
 
 # run eww daemon -c $HOME/.config/eww-which-key
 hyprpm reload -n

@@ -59,4 +59,4 @@ def setup_monitors(debug_mode: false)
   end
 end
 
-setup_monitors(debug_mode: true)
+setup_monitors(debug_mode: false)
