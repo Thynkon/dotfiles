@@ -5,6 +5,7 @@ vim.g.mapleader = ","
 vim.g.user_emmet_leader_key = "<C-Z>"
 -- By default timeoutlen is 1000 ms
 vim.g.timeoutlen = 500
+vim.g.lazyvim_picker = "snacks"
 
 -- vim.lsp.config("expert", {
 --   cmd = { "expert" },
