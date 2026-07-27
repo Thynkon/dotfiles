@@ -1,4 +1,4 @@
-local config = require("hyprland/config")
+local config = require("config/hyprland/config")
 
 hl.bind(config.mainMod .. " + RETURN", hl.dsp.exec_cmd(config.terminal))
 hl.bind(config.mainMod .. " + C", hl.dsp.window.close())

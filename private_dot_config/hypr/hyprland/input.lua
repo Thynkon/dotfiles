@@ -39,11 +39,18 @@ hl.config({
 	},
 })
 
--- Per-device config for your Glove80
+hl.config({
+	input = {
+		kb_layout = "ch,optimot",
+		kb_variant = "fr,",
+		kb_options = "grp:alt_shift_toggle",
+	},
+})
+
 hl.device({
 	name = "glove80-keyboard",
-	kb_layout = "fr",
-	kb_variant = "optimot_ergo_18",
+	kb_layout = "optimot",
+	kb_variant = "",
 	numlock_by_default = true,
-	resolve_binds_by_sym = true, -- see note below
+	resolve_binds_by_sym = true,
 })

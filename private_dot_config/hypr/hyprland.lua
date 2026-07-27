@@ -1,9 +1,9 @@
-require("hyprland/config")
-require("hyprland/env")
-require("hyprland/keybinds")
-require("hyprland/autostart")
-require("hyprland/monitors")
-require("hyprland/touchscreen")
+require("config/hyprland/config")
+require("config/hyprland/env")
+require("config/hyprland/keybinds")
+require("config/hyprland/autostart")
+require("config/hyprland/monitors")
+--require("config/hyprland/touchscreen")
 
 hl.monitor({
 	output = "",
@@ -21,10 +21,10 @@ smw.setup({
 	workspace_count = 5, -- 5 persistant workspaces per monitor
 })
 
-require("hyprland/input")
-require("hyprland/glove")
-require("hyprland/ui")
-require("hyprland/layout")
+require("config/hyprland/input")
+require("config/hyprland/glove")
+require("config/hyprland/ui")
+require("config/hyprland/layout")
 
 hl.config({
 	debug = {

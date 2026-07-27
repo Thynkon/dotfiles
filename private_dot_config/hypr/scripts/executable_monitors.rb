@@ -50,9 +50,9 @@ def setup_monitors(debug_mode: false)
     width = main_monitor_res.split('x').first
 
     cmd = if name == main_monitor
-            "hyprctl keyword monitor \"#{name},#{max_freq}, 0x0, 1\""
+            "hyprctl eval 'hl.monitor({ output = \"#{name}\", mode = \"#{max_freq}\", position = \"0x0\", scale = 1 })'"
           else
-            "hyprctl keyword monitor \"#{name},#{max_freq}, #{width}x0, 1\""
+            "hyprctl eval 'hl.monitor({ output = \"#{name}\", mode = \"#{max_freq}\", position = \"#{width}x0\", scale = 1 })'"
           end
 
     exec_cmd(cmd, debug_mode)
